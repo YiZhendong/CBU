@@ -7,12 +7,9 @@ package com.dong.cbu.model;
 public class Movie {
     private int id;
     private String name;
-    private String director;
-    private String actor;
+    private int directorId;
+    private int actorId;
     private int count;
-    private String type;
-    private int status;
-    private String introduction;
 
     public int getId() {
         return id;
@@ -30,20 +27,20 @@ public class Movie {
         this.name = name;
     }
 
-    public String getDirector() {
-        return director;
+    public int getDirectorId() {
+        return directorId;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public void setDirectorId(int directorId) {
+        this.directorId = directorId;
     }
 
-    public String getActor() {
-        return actor;
+    public int getActorId() {
+        return actorId;
     }
 
-    public void setActor(String actor) {
-        this.actor = actor;
+    public void setActorId(int actorId) {
+        this.actorId = actorId;
     }
 
     public int getCount() {
@@ -54,27 +51,15 @@ public class Movie {
         this.count = count;
     }
 
-    public String getType() {
-        return type;
+    public int getTypeId() {
+        return typeId;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 
-    public int getStatus() {
-        return status;
-    }
+    private int typeId;
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
 }
