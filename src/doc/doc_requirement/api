@@ -1,0 +1,79 @@
+用户注册
+url:/staff/register.do
+method:post
+Request:
+{
+    "Name": "宋二",		//用户姓名
+    "password": "test",	        //密码
+    "sex",
+    "email",
+    "birthday"
+
+}
+Response:
+{
+    "status": 12,     //status 12成功,13失败,17用户名已存在
+    "body": null
+}
+
+
+用户登录
+说明：不同级别的人登录之后根据返回的status值显示对应的界面
+url:/staff/login.do
+method:post
+url params:
+(
+loginName=test,      //String 登录名
+password=test,       //String 密码
+)
+Response:
+{
+    "status": 3,    //0管理员 1后台 2客户经理 3实习生 15员工不存在 16密码不正确
+    "body": {
+        "id": 7,
+        "Name": "哈哈",
+        "password": "",
+        "sex": "test",
+        "email": ,
+        "bitrhday":
+    }
+}
+
+个人资料
+说明：查看用户的信息
+url:/staff/showOneStaff.do
+method:post
+url params:
+(
+id,
+)
+Response
+{
+    "status": 3,    //0管理员 1后台 2客户经理 3实习生 15员工不存在 16密码不正确
+        "body": {
+            "id": 7,
+            "Name": "哈哈",
+            "password": "",
+            "sex": "test",
+            "email": ,
+            "bitrhday":
+        }
+}
+
+个人信息修改
+
+url:/staff/superUpdateStaff.do
+method:post
+Request:
+{
+    "id": 7,
+     "Name": "哈哈",
+     "password": "",
+     "sex": "test",
+     "email": ,
+     "bitrhday":}
+Response
+{
+    "status": 12,
+    "body": null
+}
