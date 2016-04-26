@@ -62,6 +62,8 @@ table staff:
         5.2根据名字搜索
     6.对电影评论
     7.订票
+    8.查看订单
+    9.退票
 
 
 
@@ -213,6 +215,88 @@ Response:{
     status:5        //5:操作成功    6:操作失败
     body:null
 }
+7.订票
+url:/member/movie/order.do
+method:post
+Request:
+{
+    "member":
+    {
+        "id":123
+        "money":10          //余额
+    }
+    //这是一个数组，可能预定的不止一个座位
+    "seat":
+    [
+    {
+         "line":1,
+         "column":1,
+    }
+    {
+        "line":1,
+        "column":2,
+    }
+    ]
+}
+    Response:
+    {
+        "status": 5
+        "body": null
+    }
+
+    8.查看自己订单
+    url:/member/moive/showCheck.do
+    method:get
+    request:
+    {
+        member_id:123
+    }
+    response:
+
+    {
+
+        "status": 5,
+        "body":
+        {
+        "orderTable":
+        [
+        {
+            "id":123,
+            "planid":123,
+            "memberId":123,
+            "seatId":123,
+            "money":213,
+            "state": 1,
+            "created":2016-04-26 21:46:00
+        }
+        {
+            "id":13,
+            "planid":123,
+            "memberId":123,
+            "seatId":123,
+            "money":213,
+            "state": 1,
+            "created":2016-04-26 21:46:00
+        }
+        }
+    }
+
+    9.退订单
+    url:/member/moive/returnMoney.do
+    method:post
+    request:
+    {
+        orderTable_id:123
+    }
+    response:
+    {
+        "status":5
+        "body":
+        {
+            null
+        }
+    }
+
 
 
 
