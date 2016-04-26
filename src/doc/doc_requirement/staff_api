@@ -1,0 +1,227 @@
+api:
+
+base_url:http://localhost:8080/CBU
+
+
+    public static final int manager = 0;    //网站管理员
+    public static final int boss = 1;       //老板
+    public static final int customer_manager = 2; //客户经理
+    public static final int member = 3;     //用户
+    public static final int visitor = 4;    //游客
+    public static final int action_success = 5; //操作成功
+    public static final int action_fail = 6;    //操作失败
+    public static final int not_exits = 7;      //用户不存在
+    public static final int alreadyexits = 8;   //用户名已经存在
+    public static final int password_not_correct = 9; //用户密码不正确
+    public static final int login_success = 10; //登录成功
+    public static final int no_records = 11;    //没有任何记录
+
+
+    //属性默认都为非空
+table  member:
+    `id` int(11) `成员id`,
+    `name` varchar(20) `用户名`,
+    `password` varchar(40)  `登录密码`
+    `sex`   tinyint(1)  `性别`                //非必须   0:男   1:女
+    `email` varchar(40) `邮箱`                //非必须
+    `birthday`  date    `生日`                //非必须
+    `money`     int(40) `账户余额`            //初始设置为100,
+
+
+table movie:
+    `id` int(11)    `电影id`,
+    `name` varchar(50)      `电影名`
+    `score`    tinyint(2)   `得分`
+    `status`    tinyint(2)  `状态`            //0:将上映1:没有上映计划2:正在上映3:已经上映结束
+    `introduction` text     `介绍`
+
+table comment:
+    `id` int(11)    `评论id`,
+    `title` varchar(50)     `标题`
+    `keyword`   varchar(30) `关键字`
+    `clicks`    int(11)     `浏览次数`
+    `detail`    mediumtext  `评论内容`
+    `owenerId`  int(11)     `作者id`
+    `created`   timestamp   `发表时间` 格式:0000-00-00 00:00:00
+    `movieId`   int(11)     `电影id`
+    `preuserId` int(11)     `所回复作者的Id，就是说对哪个人评论，那个人的id`  //非必须
+
+table staff:
+    `id` int(11)    `职员id`
+    `loginName` varchar(40)     `登录名字`
+    `password`  char(11)        `密码`
+    `status`    tinyint         `身份`    0:staff 1:manager
+
+    staff action包括
+        1.制定计划
+        2.查看营业额
+        3.进行不当评论删除
+
+    1.制定计划
+    url:/staff/makePlan.do
+    method:get
+    Request:{
+        staffId=`123`       //指定计划的职员id
+        movieId=`123123`    //计划放映电影Id
+        beigining=0000-00-00 00:00:00   //开始时间
+        ending=0000-00-00 00:00:00      //结束时间
+        money=`40`          //票价
+    }
+    Response:{
+        status: 5           //5:操作成功  6:操作失败
+        body:null
+    }
+
+
+    2.查看营业额
+    //查看已经出售了多少张票，收入多少，余票多少
+    url:/staff/checkIncome.do
+    method:post
+    Request:{
+        planId=123      //计划id
+    }
+    Response:{
+        income=`6666`
+        leftTickets=`23`
+        soldTickets=`77`
+    }
+
+
+    3.分页查看所未审批的评论
+    url://staff/showAllNewComment.do
+    method:get
+    Request:{
+        currentPage=1
+    }
+    Response:{
+        "status" = 5
+        body:{
+        "currentPage":1,
+        "totalPage":1,
+        "totalRecords":2
+        "comments"
+        [{
+         id(member):12
+            id(movie):12
+            title:"今天下午吃什么？"
+            keyword:"吃"
+            detail:"银桦还是学子还是家园还是芙蓉，this is a question."
+            created:"2016-04-26 17:18:00"       //创建时间
+            preuserId:null
+            status:0                        //0:未审批 1:已审批
+        }，
+        { id(member):12
+             id(movie):12
+             title:"今天下午吃什么？"
+             keyword:"吃"
+             detail:"银桦还是学子还是家园还是芙蓉，this is a question."
+             created:"2016-04-26 17:18:00"       //创建时间
+             preuserId:null
+        }
+        ]
+        }
+    }
+
+    4.进行评论的审批
+    url:/staff/checkComment.do
+    method:post
+    Request:{
+    //传入的是一个数组，元素是评论的id
+        array[commentid1:123,
+              commentid2:124，
+              commentId3:125,
+            ]
+    }
+    Response:{
+        "status":5
+        body:null
+    }
+    5.进行评论的删除
+    url:/staff/deleteComment.do
+    method:post
+    Request:{
+        "commentIds":[1,6,12]               //需要删除的评论的id
+    }
+
+
+    6.老板查看所有放映计划
+    url:/boss/checkPlan.do
+    method:get
+    Request:null
+    Response:
+    {
+        "status":5,
+        "body":[
+            {
+                "id":123,
+                "staffId":123
+                "movieId":123
+                "beginning":0000-00-00 00:00:00
+                "ending":0000-00-00 00:00:00
+                "money":10              //票价
+                "status":   0           //0:在审批中 1：yes 2：no
+                "income": 0
+                "leftTickets": 100
+                "soldTickets": 0
+
+            }
+            {
+                "id":124,
+                "staffId":123
+                "movieId":123
+                "beginning":0000-00-00 00:00:00
+                "ending":0000-00-00 00:00:00
+                "money":10              //票价
+                "status":   0           //0:在审批中 1：yes 2：no
+                "income": 0
+                "leftTickets": 100
+                "soldTickets": 0
+
+            }
+
+        ]
+    }
+
+    7.进行放映计划的审批
+    url:/bass/showPlan.do
+    method:post
+    Request:
+    {
+        "plan":
+        {
+            "id":123
+        }
+    }
+    Response:
+    {
+        "status":5,
+        "body":[
+            {
+                "id":123,
+                "staffId":123
+                "movieId":123
+                "beginning":0000-00-00 00:00:00
+                "ending":0000-00-00 00:00:00
+                "money":10              //票价
+                "status":   1           //0:在审批中 1：yes 2：no
+                "income": 0
+                "leftTickets": 100
+                "soldTickets": 0
+
+            }
+            {
+                "id":124,
+                "staffId":123
+                "movieId":123
+                "beginning":0000-00-00 00:00:00
+                "ending":0000-00-00 00:00:00
+                "money":10              //票价
+                "status":   2           //0:在审批中 1：yes 2：no
+                "income": 0
+                "leftTickets": 100
+                "soldTickets": 0
+
+            }
+
+        ]
+    }

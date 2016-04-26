@@ -5,7 +5,7 @@ base_url:http://localhost:8080/CBU
 
     public static final int manager = 0;    //网站管理员
     public static final int boss = 1;       //老板
-    public static final int customer_manager = 2; //客户经理
+    public static final int staff = 2;      //客户经理
     public static final int member = 3;     //用户
     public static final int visitor = 4;    //游客
     public static final int action_success = 5; //操作成功
@@ -46,8 +46,13 @@ table comment:
     `movieId`   int(11)     `电影id`
     `preuserId` int(11)     `所回复作者的Id，就是说对哪个人评论，那个人的id`  //非必须
 
+table staff:
+    `id` int(11)    `职员id`
+    `loginName` varchar(40)     `登录名字`
+    `password`  char(11)        `密码`
+    `status`    tinyint         `身份`    0:staff 1:manager
 
-    action包括
+    member action包括
     1.用户注册
     2.用户登录
     3.查看个人信息
@@ -56,8 +61,9 @@ table comment:
         5.1根据评分&类型进行搜索
         5.2根据名字搜索
     6.对电影评论
-    7.对电影打分         //决定不进行这个操作
-    8.为电影设置标签       //也不进行这个操作
+    7.订票
+
+
 
 
 1.用户注册
@@ -65,7 +71,7 @@ url:/member/register.do
 method:post
 Request:
 {
-    "name": "宋二",		                       //用户姓名
+    "name": "宋智孝",		                       //用户姓名
     "password": "test",	                       //密码
     "sex",
     "email",
@@ -92,7 +98,7 @@ Response:
     "status": 3,                                //0管理员 1老板 2客户经理 3用户 7用户不存在 9密码不正确
     "body": {
         "id": 7,
-        "Name": "哈哈",
+        "Name": "李光洙",
         "password": "",
         "sex": "test",
         "email": ,
@@ -101,7 +107,7 @@ Response:
 }
 
 3.个人资料
-说明：查看用户的信息
+说明：查看自己的信息
 url:/member/showOneMember.do
 method:post
 url params:
@@ -113,7 +119,7 @@ Response
     "status": 3,                                //0管理员 1老板 2客户经理 3用户
         "body": {
             "id": 7,
-            "Name": "哈哈",
+            "Name": "刘在石",
             "password": "",
             "sex": "test",
             "email": ,
@@ -128,7 +134,7 @@ method:post
 Request:
 {
     "id": 7,
-     "Name": "哈哈",
+     "Name": "狗哥",
      "password": "",
      "sex": "test",
      "email": ,
@@ -207,5 +213,7 @@ Response:{
     status:5        //5:操作成功    6:操作失败
     body:null
 }
+
+
 
 
