@@ -1,34 +1,95 @@
-用户注册
-url:/staff/register.do
+api:
+
+base_url:http://localhost:8080/CBU
+
+
+    public static final int manager = 0;    //网站管理员
+    public static final int boss = 1;       //老板
+    public static final int customer_manager = 2; //客户经理
+    public static final int member = 3;     //用户
+    public static final int visitor = 4;    //游客
+    public static final int action_success = 5; //操作成功
+    public static final int action_fail = 6;    //操作失败
+    public static final int not_exits = 7;      //用户不存在
+    public static final int alreadyexits = 8;   //用户名已经存在
+    public static final int password_not_correct = 9; //用户密码不正确
+    public static final int login_success = 10; //登录成功
+    public static final int no_records = 11;    //没有任何记录
+
+
+    //属性默认都为非空
+table  member:
+    `id` int(11) `成员id`,
+    `name` varchar(20) `用户名`,
+    `password` varchar(40)  `登录密码`
+    `sex`   tinyint(1)  `性别`                //非必须   0:男   1:女
+    `email` varchar(40) `邮箱`                //非必须
+    `birthday`  date    `生日`                //非必须
+    `money`     int(40) `账户余额`            //初始设置为100,
+
+
+table movie:
+    `id` int(11)    `电影id`,
+    `name` varchar(50)      `电影名`
+    `score`    tinyint(2)   `得分`
+    `status`    tinyint(2)  `状态`            //0:将上映1:没有上映计划2:正在上映3:已经上映结束
+    `introduction` text     `介绍`
+
+table comment:
+    `id` int(11)    `评论id`,
+    `title` varchar(50)     `标题`
+    `keyword`   varchar(30) `关键字`
+    `clicks`    int(11)     `浏览次数`
+    `detail`    mediumtext  `评论内容`
+    `owenerId`  int(11)     `作者id`
+    `created`   timestamp   `发表时间` 格式:0000-00-00 00:00:00
+    `movieId`   int(11)     `电影id`
+    `preuserId` int(11)     `所回复作者的Id，就是说对哪个人评论，那个人的id`  //非必须
+
+
+    action包括
+    1.用户注册
+    2.用户登录
+    3.查看个人信息
+    4.修改个人信息
+    5.搜索
+        5.1根据评分&类型进行搜索
+        5.2根据名字搜索
+    6.对电影评论
+    7.对电影打分         //决定不进行这个操作
+    8.为电影设置标签       //也不进行这个操作
+
+
+1.用户注册
+url:/member/register.do
 method:post
 Request:
 {
-    "Name": "宋二",		//用户姓名
-    "password": "test",	        //密码
+    "name": "宋二",		                       //用户姓名
+    "password": "test",	                       //密码
     "sex",
     "email",
     "birthday"
-
 }
 Response:
 {
-    "status": 12,     //status 12成功,13失败,17用户名已存在
+    "status": 12,                               //status 5成功,6失败,8用户名已存在
     "body": null
 }
 
 
-用户登录
+2.用户登录
 说明：不同级别的人登录之后根据返回的status值显示对应的界面
-url:/staff/login.do
+url:/member/login.do
 method:post
 url params:
-(
-loginName=test,      //String 登录名
-password=test,       //String 密码
-)
+{
+    loginName=test,                             //String 登录名
+    password=test,                              //String 密码
+}
 Response:
 {
-    "status": 3,    //0管理员 1后台 2客户经理 3实习生 15员工不存在 16密码不正确
+    "status": 3,                                //0管理员 1老板 2客户经理 3用户 7用户不存在 9密码不正确
     "body": {
         "id": 7,
         "Name": "哈哈",
@@ -39,17 +100,17 @@ Response:
     }
 }
 
-个人资料
+3.个人资料
 说明：查看用户的信息
-url:/staff/showOneStaff.do
+url:/member/showOneMember.do
 method:post
 url params:
-(
-id,
-)
+{
+    id,
+}
 Response
 {
-    "status": 3,    //0管理员 1后台 2客户经理 3实习生 15员工不存在 16密码不正确
+    "status": 3,                                //0管理员 1老板 2客户经理 3用户
         "body": {
             "id": 7,
             "Name": "哈哈",
@@ -60,9 +121,9 @@ Response
         }
 }
 
-个人信息修改
+4.个人信息修改
 
-url:/staff/superUpdateStaff.do
+url:/member/superUpdateMember.do
 method:post
 Request:
 {
@@ -71,9 +132,80 @@ Request:
      "password": "",
      "sex": "test",
      "email": ,
-     "bitrhday":}
+     "bitrhday":
+}
 Response
 {
     "status": 12,
     "body": null
 }
+
+5.搜索
+5.1根据评分&类型进行搜索,将所有的搜索出来的电影以图片加名字加评分的形式展示
+    具体布局参考豆瓣电影
+url:/member/movie/searchByScoreAndType.do
+method:post
+Request:{
+    score = 4.5,
+    type = 0    //0:爱情 1:动作 2:动画 3:剧情 4:科幻 5:经典 6:悬疑 7:青春 8:犯罪 9:惊悚 10:文艺 11:记录 12:搞笑
+                //13:励志 14:恐怖 15:战争 16:短片 17:魔幻 18:黑色幽默 19:传记 20:情色
+}
+Response{
+    "status" : 5        //5:操作成功 11:没有记录
+    "body":[
+    {
+        "id":12,
+        "name":"大圣归来"
+        "score":8.0                   //评分
+    }
+    {
+             "id":12,
+             "name":"归来"
+             "score":8.0                   //评分
+     }
+    {
+            "id":12,
+            "name":"叶问3"
+            "score":8.0                   //评分
+     }
+     {
+                "id":12,
+                "name":"疯狂动物城"
+                "score":8.0                   //评分
+     }]
+}
+
+5.2根据名字搜索电影
+url:/member/movie/searchByName.do
+methond:post
+Request:{
+    name="北京遇上西雅图2(暂时还没看。。。)"
+}
+Reponse:{
+    status:5            //5:操作成功 11:没有记录
+     "body":[
+        {
+            "id":12,
+            "name":"北京遇上西雅图"
+            "score":8.0                   //评分
+        }
+
+}
+6.对电影进行评论
+url:/member/movie/comment.do
+method:post
+Request:{
+    id(member):12
+    id(movie):12
+    title:"今天下午吃什么？"
+    keyword:"吃"
+    detail:"银桦还是学子还是家园还是芙蓉，this is a question."
+    created:"2016-04-26 17:18:00"       //创建时间
+    preuserId:null
+}
+Response:{
+    status:5        //5:操作成功    6:操作失败
+    body:null
+}
+
+
