@@ -2,17 +2,18 @@ package com.dong.cbu.controller;
 
 import com.dong.cbu.commom.Response;
 import com.dong.cbu.commom.Status;
+import com.dong.cbu.exception.MemberAlreadyExistException;
 import com.dong.cbu.exception.NotExistException;
 import com.dong.cbu.exception.PasswordNotMatchException;
+import com.dong.cbu.exception.UnknownException;
 import com.dong.cbu.model.Member;
 import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.SessionUtil;
+import com.dong.cbu.validator.MemberAddValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.servlet.http.HttpServlet;
@@ -50,6 +51,23 @@ public class MemberAction {
         SessionUtil.setLoginMember(request,member);
         return new Response(status,member);
     }
+
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/register.do",method = RequestMethod.POST)
+    @ResponseBody
+    public Object registerMember(HttpServletRequest request, @Validated({MemberAddValidator.class})@RequestBody Member member){
+        int status = Status.action_success;
+        try{
+            memberService.insert(member);
+        }catch(MemberAlreadyExistException e){
+            e.printStackTrace();
+            status = Status.alreadyexits;
+        }catch(UnknownException e){
+            e.printStackTrace();
+            status = Status.action_fail;
+        }
+        return new Response(status);
+    }
+
 
 
 }

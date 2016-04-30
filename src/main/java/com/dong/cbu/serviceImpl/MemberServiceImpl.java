@@ -1,9 +1,13 @@
 package com.dong.cbu.serviceImpl;
 
+import com.dong.cbu.commom.Status;
 import com.dong.cbu.dao.MemberMapper;
+import com.dong.cbu.exception.MemberAlreadyExistException;
 import com.dong.cbu.exception.NotExistException;
 import com.dong.cbu.exception.PasswordNotMatchException;
+import com.dong.cbu.exception.UnknownException;
 import com.dong.cbu.model.Member;
+import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.EncryptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,13 +17,13 @@ import org.springframework.stereotype.Service;
  * email:myyizhendong@gmail.com
  */
 @Service
-public class MemberServiceImpl {
+public class MemberServiceImpl implements MemberService{
     @Autowired
     private MemberMapper memberMapper;
 
     @Override
     public Member login(String name,String password) throws NotExistException,PasswordNotMatchException{
-        Member member = MemberMapper.loginMember(name);
+        Member member = memberMapper.loginMember(name);
         if(member == null){
             throw new NotExistException("member"+name+"not exists");
         }else{
@@ -27,6 +31,18 @@ public class MemberServiceImpl {
             if(!encryptPassword.equals(EncryptionUtil.encrypt(password))){
                 throw new PasswordNotMatchException();
             }
+        }
+    }
+
+    @Override
+    public void insert(Member member) throws MemberAlreadyExistException,UnknownException {
+        if(memberMapper.isMemberExists(member)!=0){
+            throw new MemberAlreadyExistException("Member is already exists");
+        }
+        String encryptPassword = EncryptionUtil.encrypt(member.getPassword());
+        member.setPassword(encryptPassword);
+        if(memberMapper.insertMember(member) == Status.action_fail){
+            throw new UnknownException();
         }
     }
 }
