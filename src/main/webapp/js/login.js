@@ -1,0 +1,23 @@
+$(function(){
+
+    //登陆的提交事件
+    $(".loginSumbit").click(function(){
+
+      var username=$("#user").val();
+      var password= $("#psw").val();
+        $.ajax({
+            url:,
+            data:{
+                username:username,
+                password:password
+            }
+            type:"POST",
+            contentType:"application/json",
+            success:function(data){
+
+            
+            },
+            error:function(){ console.log("发送ajax失败");}
+        });
+    });
+});
