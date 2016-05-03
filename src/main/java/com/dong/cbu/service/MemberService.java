@@ -9,8 +9,8 @@ import com.dong.cbu.model.Member;
 import com.dong.cbu.model.Movie;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
+
 
 /**
  * Created by zhendong on 2016/4/29.
