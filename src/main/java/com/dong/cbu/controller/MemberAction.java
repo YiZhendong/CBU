@@ -15,11 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-
-import static com.dong.cbu.controller.MemberAction.ACTION_BASE_URL_HEADER;
 
 
 /**

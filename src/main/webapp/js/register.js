@@ -2,7 +2,8 @@ $(function(){
     register();     //提交注册信息
 });
 function register(){
-	$("#btn").click(function()){
+	$("#btn").click(function(){
+
         var staff = {
             userName:$("#username").val(),
             password:$("#password").val(),
@@ -10,7 +11,7 @@ function register(){
             birthday:$("#birthday").val(),
             gender:$("#gender")
         };
-        
+        console.log(staff);
         $.ajax({
             url:,
             type:"POST",
@@ -22,5 +23,5 @@ function register(){
             },
             error:function(){ console.log("发送ajax失败");}
         });
-	}
+	});
 }
