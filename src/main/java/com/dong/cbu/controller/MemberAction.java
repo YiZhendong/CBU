@@ -68,6 +68,39 @@ public class MemberAction {
         return new Response(status);
     }
 
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/showOneMember.do",method = RequestMethod.POST)
+    @ResponseBody
+    public Object showOneMember(@RequestParam int id){
+        int status = Status.action_success;
+        Member member = new Member();
+        try {
+            member = memberService.showOneMember(id);
+            if(member == null){
+                status = Status.not_exits;
+            }
+        }catch (UnknownException e){
+            e.printStackTrace();
+        }
+        return new Response(status,member);
+    }
 
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/superUpdateMember.do",method = RequestMethod.POST)
+    @ResponseBody
+    public Object superUpdateMember(@Validated({MemberAddValidator.class})@RequestBody Member member){
+        int status = Status.action_success;
+        try{
+            memberService.superUpdateMember(member);
+        }catch(UnknownException e){
+            e.printStackTrace();
+            status = Status.action_fail;
+        }
+        return new Response(status);
+    }
 
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/searchByScoreAndType.do",method = RequestMethod.POST)
+    @ResponseBody
+    public Object searchByScoreAndType(@RequestParam("score")float score,@RequestParam("type")int type){
+        int status = Status.action_success;
+
+    }
 }

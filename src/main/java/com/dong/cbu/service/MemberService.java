@@ -9,6 +9,8 @@ import com.dong.cbu.model.Member;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by zhendong on 2016/4/29.
  * email:myyizhendong@gmail.com
@@ -20,4 +22,13 @@ public interface MemberService {
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
     void insert(Member member)throws MemberAlreadyExistException,UnknownException;
+
+    @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
+    Member showOneMember(int id)throws UnknownException;
+
+    @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
+    void superUpdateMember(Member member)throws UnknownException;
+
+    @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
+    List<Member> searchByScoreAndType(int score,int type)throws NotExistException;
 }

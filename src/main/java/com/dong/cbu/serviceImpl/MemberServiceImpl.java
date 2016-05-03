@@ -7,10 +7,13 @@ import com.dong.cbu.exception.NotExistException;
 import com.dong.cbu.exception.PasswordNotMatchException;
 import com.dong.cbu.exception.UnknownException;
 import com.dong.cbu.model.Member;
+import com.dong.cbu.model.Movie;
 import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.EncryptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by zhendong on 2016/4/29.
@@ -44,5 +47,19 @@ public class MemberServiceImpl implements MemberService{
         if(memberMapper.insertMember(member) == Status.action_fail){
             throw new UnknownException();
         }
+    }
+    @Override
+    public Member showOneMember(int id) throws UnknownException{
+        return memberMapper.showOneMember(id);
+    }
+
+    @Override
+    public void superUpdateMember(Member member) throws UnknownException{
+        memberMapper.superUpdateMember(member);
+    }
+
+    @Override
+    public List<Movie> searchByScoreAndType(int score,int type) throws NotExistException{
+
     }
 }

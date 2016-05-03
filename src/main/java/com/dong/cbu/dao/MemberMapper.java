@@ -10,4 +10,6 @@ public interface MemberMapper {
     int insertMember(Member member);
     int isMemberExists(Member member);
     Member loginMember(String name);
+    Member showOneMember(int id);
+    void superUpdateMember(Member member);
 }

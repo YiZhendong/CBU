@@ -24,4 +24,24 @@
     <select id="loginMember" resultType="com.dong.cbu.model.Member" parameterType="String">
         SELECT <include refid="BaseColumnList"/>FROM member WHERE name = #{name,jdbcType=VARCHAR}
     </select>
+    
+    <select id="showOneMember" parameterType="int" resultType="com.dong.cbu.model.Member">
+        SELECT<include refid="BaseColumnList"/>from member WHERE id = #{id,jdbcType=BIGINT};
+    </select>
+
+    <select id="superUpdateMember" parameterType="com.dong.cbu.model.Member">
+        UPDATE member
+        <set>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=int},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,idbctype=int}
+    </select>
 </mapper>
