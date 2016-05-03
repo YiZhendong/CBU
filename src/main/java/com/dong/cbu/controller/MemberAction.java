@@ -7,6 +7,7 @@ import com.dong.cbu.exception.NotExistException;
 import com.dong.cbu.exception.PasswordNotMatchException;
 import com.dong.cbu.exception.UnknownException;
 import com.dong.cbu.model.Member;
+import com.dong.cbu.model.Movie;
 import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.SessionUtil;
 import com.dong.cbu.validator.MemberAddValidator;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.dong.cbu.controller.MemberAction.ACTION_BASE_URL_HEADER;
 
@@ -99,8 +103,15 @@ public class MemberAction {
 
     @RequestMapping(value = ACTION_BASE_URL_HEADER + "/searchByScoreAndType.do",method = RequestMethod.POST)
     @ResponseBody
-    public Object searchByScoreAndType(@RequestParam("score")float score,@RequestParam("type")int type){
+    public Object searchByScoreAndType(@RequestParam("score")int score,@RequestParam("type")int type){
         int status = Status.action_success;
-
+        List<Movie> movies = new ArrayList<Movie>();
+        try{
+            movies = memberService.searchByScoreAndType(score,type,movies);
+        }catch (NotExistException e){
+            e.printStackTrace();
+            status = Status.action_fail;
+        }
+        return new Response(status,movies);
     }
 }

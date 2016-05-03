@@ -35,6 +35,7 @@ public class MemberServiceImpl implements MemberService{
                 throw new PasswordNotMatchException();
             }
         }
+        return member;
     }
 
     @Override
@@ -59,7 +60,8 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public List<Movie> searchByScoreAndType(int score,int type) throws NotExistException{
-
+    public List<Movie> searchByScoreAndType(int score,int type,List<Movie> movies) throws NotExistException{
+        movies = memberMapper.searchByScoreAndType(score,type);
+        return movies;
     }
 }

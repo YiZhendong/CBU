@@ -6,6 +6,7 @@ import com.dong.cbu.exception.PasswordNotMatchException;
 
 import com.dong.cbu.exception.UnknownException;
 import com.dong.cbu.model.Member;
+import com.dong.cbu.model.Movie;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,5 +31,5 @@ public interface MemberService {
     void superUpdateMember(Member member)throws UnknownException;
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
-    List<Member> searchByScoreAndType(int score,int type)throws NotExistException;
+    List<Movie> searchByScoreAndType(int score,int type,List<Movie> Movies)throws NotExistException;
 }

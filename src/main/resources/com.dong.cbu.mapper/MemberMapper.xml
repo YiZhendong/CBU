@@ -44,4 +44,12 @@
         </set>
         where id = #{id,idbctype=int}
     </select>
+
+    <select id="searchByScoreAndType" parameterType="int" resultType="Integer">
+        SELECT id FROM movie WHERE score >= #{score,jdbcType=int},type = #{type,jdbcType=int}
+    </select>
+
+    <select id="searchByName" parameterType="varchar" resultType="Integer">
+        SELECT id FROM movie WHERE name =#{name,jdbcType={VARCHAR }}
+    </select>
 </mapper>
