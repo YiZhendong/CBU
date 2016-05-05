@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1cbcd2a0-f87c-4188-88a6-541e7cee9eab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com.dong.cbu.mapper/MemberMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com.dong.cbu.mapper/MemberMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring-mybatis.xml" afterPath="$PROJECT_DIR$/target/classes/spring-mybatis.xml" />
     </list>
     <ignored path="cbu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -147,7 +145,7 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <push-targets>
-      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="origin1" target-branch="master" />
+      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="origin" target-branch="master" />
     </push-targets>
   </component>
   <component name="GradleLocalSettings">
@@ -1203,7 +1201,7 @@
       <workItem from="1462285918792" duration="1716000" />
       <workItem from="1462288016520" duration="572000" />
       <workItem from="1462360710054" duration="4954000" />
-      <workItem from="1462432112797" duration="1789000" />
+      <workItem from="1462432112797" duration="1876000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://git.coding.net/zander_yi/cbu&#10;&#10;Conflicts:&#10;&#9;.idea/misc.xml&#10;&#9;src/main/java/com/dong/cbu/controller/MemberAction.java&#10;">
       <created>1462287389465</created>
@@ -1219,15 +1217,22 @@
       <option name="project" value="LOCAL" />
       <updated>1462433882666</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="添加了用户评论逻辑。">
+      <created>1462433910877</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1462433910878</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11634000" />
+    <option name="totallyTimeSpent" value="11721000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
