@@ -5,6 +5,7 @@ import com.dong.cbu.exception.NotExistException;
 import com.dong.cbu.exception.PasswordNotMatchException;
 
 import com.dong.cbu.exception.UnknownException;
+import com.dong.cbu.model.Comment;
 import com.dong.cbu.model.Member;
 import com.dong.cbu.model.Movie;
 import org.springframework.transaction.annotation.Isolation;
@@ -32,4 +33,7 @@ public interface MemberService {
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
     List<Movie> searchByScoreAndType(int score,int type,List<Movie> Movies)throws NotExistException;
+
+    @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
+    void comment(Comment comment)throws UnknownException;
 }

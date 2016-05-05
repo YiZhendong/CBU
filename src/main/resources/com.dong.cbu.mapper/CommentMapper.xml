@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+        <mapper>
+    <insert id="comment" parameterType="com.dong.cbu.model.Comment">
+        insert INTO comment (id,title,keyword,clicks,detail,owenerId,createdId,movieId,preuserId)
+        VALUES
+        (#{id,jdbcType=int},#{title,jdbcType=varchar},#{keyword,jdbcType=varchar},#{clicks,jdbctype=int},#{detail,jdbctype=varchar},
+        #{ownerId,jdbcType=int},#{createdId,jdbctype=int},#{movieId,jdbcType=int},#{preuserId,jdbcType=int})
+    </insert>
+</mapper>

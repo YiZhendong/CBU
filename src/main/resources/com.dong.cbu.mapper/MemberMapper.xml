@@ -52,4 +52,6 @@
     <select id="searchByName" parameterType="varchar" resultType="Integer">
         SELECT id FROM movie WHERE name =#{name,jdbcType={VARCHAR }}
     </select>
+
+    <select id="comment" parameterType=""
 </mapper>

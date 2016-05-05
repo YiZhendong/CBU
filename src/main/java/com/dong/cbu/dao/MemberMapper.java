@@ -1,5 +1,6 @@
 package com.dong.cbu.dao;
 
+import com.dong.cbu.model.Comment;
 import com.dong.cbu.model.Member;
 import com.dong.cbu.model.Movie;
 
