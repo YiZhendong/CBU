@@ -2,12 +2,11 @@ package com.dong.cbu.controller;
 
 import com.dong.cbu.commom.Response;
 import com.dong.cbu.commom.Status;
-import com.dong.cbu.exception.MemberAlreadyExistException;
-import com.dong.cbu.exception.NotExistException;
-import com.dong.cbu.exception.PasswordNotMatchException;
-import com.dong.cbu.exception.UnknownException;
+import com.dong.cbu.exception.*;
+import com.dong.cbu.model.Comment;
 import com.dong.cbu.model.Member;
 import com.dong.cbu.model.Movie;
+import com.dong.cbu.model.OrderTable;
 import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.SessionUtil;
 import com.dong.cbu.validator.MemberAddValidator;
@@ -20,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.dong.cbu.controller.MemberAction.ACTION_BASE_URL_HEADER;
 
 
 /**
@@ -109,5 +110,31 @@ public class MemberAction {
             status = Status.action_fail;
         }
         return new Response(status,movies);
+    }
+
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/comment.do",method = RequestMethod.POST)
+    @ResponseBody
+    public Object comment(HttpServletRequest request,@RequestBody Comment comment){
+        int status = Status.action_success;
+        try{
+            memberService.comment(comment);
+        }catch (UnknownException e){
+            e.printStackTrace();
+            status = Status.action_fail;
+        }
+        return new Response(status);
+    }
+
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "order.do",method = RequestMethod.POST)
+    @ResponseBody
+    public Object order(HttpServletRequest request, @RequestBody OrderTable ordertable){
+        int status = Status.action_success;
+        try{
+            memberService.order(ordertable);
+        }catch(MoneyNotEnoughException e){
+            e.printStackTrace();;
+            status = Status.action_fail;
+        }
+        return new Response(status);
     }
 }
