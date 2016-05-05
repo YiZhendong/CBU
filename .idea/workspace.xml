@@ -1,29 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cbcd2a0-f87c-4188-88a6-541e7cee9eab" name="Default" comment="Merge branch 'master' of https://git.coding.net/zander_yi/cbu&#10;&#10;Conflicts:&#10;&#9;.idea/misc.xml&#10;&#9;src/main/java/com/dong/cbu/controller/MemberAction.java&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/com.dong.cbu.mapper/CommentMapper.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/commom/Response.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/commom/Status.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/controller/ActorAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/dao/MemberMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/exception/UnknownException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/model/Director.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/model/DirectorInMovie.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/model/Member.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/model/Movie.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/model/OrderTable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/model/Plan.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/model/Seat.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/model/Staff.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/util/EncryptionUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dong/cbu/validator/MemberAddValidator.class" afterPath="" />
+    <list default="true" id="1cbcd2a0-f87c-4188-88a6-541e7cee9eab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/controller/MemberAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/controller/MemberAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/dao/MemberMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/dao/MemberMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/service/MemberService.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/service/MemberService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/serviceImpl/MemberServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/serviceImpl/MemberServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com.dong.cbu.mapper/MemberMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com.dong.cbu.mapper/MemberMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com.dong.cbu.mapper/MemberMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com.dong.cbu.mapper/MemberMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring-mybatis.xml" afterPath="$PROJECT_DIR$/target/classes/spring-mybatis.xml" />
     </list>
@@ -168,7 +147,7 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <push-targets>
-      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="origin" target-branch="master" />
+      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="origin1" target-branch="master" />
     </push-targets>
   </component>
   <component name="GradleLocalSettings">
@@ -1224,7 +1203,7 @@
       <workItem from="1462285918792" duration="1716000" />
       <workItem from="1462288016520" duration="572000" />
       <workItem from="1462360710054" duration="4954000" />
-      <workItem from="1462432112797" duration="1714000" />
+      <workItem from="1462432112797" duration="1789000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://git.coding.net/zander_yi/cbu&#10;&#10;Conflicts:&#10;&#9;.idea/misc.xml&#10;&#9;src/main/java/com/dong/cbu/controller/MemberAction.java&#10;">
       <created>1462287389465</created>
@@ -1233,11 +1212,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462287389465</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="添加了用户评论逻辑。">
+      <created>1462433882666</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1462433882666</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11559000" />
+    <option name="totallyTimeSpent" value="11634000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -1288,7 +1274,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'master' of https://git.coding.net/zander_yi/cbu&#10;&#10;Conflicts:&#10;&#9;.idea/misc.xml&#10;&#9;src/main/java/com/dong/cbu/controller/MemberAction.java&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://git.coding.net/zander_yi/cbu&#10;&#10;Conflicts:&#10;&#9;.idea/misc.xml&#10;&#9;src/main/java/com/dong/cbu/controller/MemberAction.java&#10;" />
+    <MESSAGE value="添加了用户评论逻辑。" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加了用户评论逻辑。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
