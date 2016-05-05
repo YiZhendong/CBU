@@ -1201,7 +1201,7 @@
       <workItem from="1462285918792" duration="1716000" />
       <workItem from="1462288016520" duration="572000" />
       <workItem from="1462360710054" duration="4954000" />
-      <workItem from="1462432112797" duration="1876000" />
+      <workItem from="1462432112797" duration="1904000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://git.coding.net/zander_yi/cbu&#10;&#10;Conflicts:&#10;&#9;.idea/misc.xml&#10;&#9;src/main/java/com/dong/cbu/controller/MemberAction.java&#10;">
       <created>1462287389465</created>
@@ -1224,11 +1224,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462433910878</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="添加了用户评论逻辑。">
+      <created>1462433996088</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1462433996088</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11721000" />
+    <option name="totallyTimeSpent" value="11749000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
