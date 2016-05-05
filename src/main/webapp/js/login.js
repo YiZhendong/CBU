@@ -10,7 +10,7 @@ $(function(){
                 password:password
       }
         $.ajax({
-            url:/member/login.do,
+            url:"/member/login.do",
             data:JSON.stringify(user),
             type:"POST",
             contentType:"application/json",
@@ -64,10 +64,10 @@ $(function(){
                      location.href = "Test_user.html"
                 }
                 if(data.status == 7){
-                    alert("用户不存在")；
+                    alert("用户不存在");
                 }
                 if(data.status == 9){
-                    alert("密码不正确")；
+                    alert("密码不正确");
                 }
 
 
