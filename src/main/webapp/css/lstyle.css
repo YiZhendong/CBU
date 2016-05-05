@@ -48,3 +48,13 @@ form div input{
 	font-size: 18px;
 	border-bottom: 3px solid #f6d703;
 }
+.tip{
+	display: none;
+	width: 30px;
+	height: 10px;
+}
+.warning{
+	color: red;
+	width: 30px;
+	height: 10px;
+}
