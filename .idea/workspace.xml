@@ -1014,7 +1014,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1462446762917</updated>
-      <workItem from="1462446764188" duration="5606000" />
+      <workItem from="1462446764188" duration="5625000" />
     </task>
     <task id="LOCAL-00001" summary="暂时可以跳转到test，但是无法登陆和注册">
       <created>1462451178628</created>
@@ -1037,11 +1037,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462452365090</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="暂时可以跳转到test，但是无法登陆和注册">
+      <created>1462452382169</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1462452382169</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5606000" />
+    <option name="totallyTimeSpent" value="5625000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -1123,7 +1130,7 @@
         <state relative-caret-position="4719">
           <caret line="266" column="14" selection-start-line="266" selection-start-column="14" selection-end-line="266" selection-end-column="14" />
           <folding>
-            <marker date="1462452354426" expanded="true" signature="192:214" placeholder="..." />
+            <marker date="1462452376729" expanded="true" signature="192:214" placeholder="..." />
           </folding>
         </state>
       </provider>
