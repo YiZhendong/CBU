@@ -82,8 +82,8 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
     <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
         <property name="patterns">
             <list>
-                <value>org.xhome.sms.service.*</value>
-                <value>org.xhome.sms.serviceImpl.*</value>
+                <value>com.dong.cbu.service.*</value>
+                <value>com.dong.cbu.serviceImpl.*</value>
             </list>
         </property>
     </bean>

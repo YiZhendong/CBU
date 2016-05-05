@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.dong.cbu.controller.MemberAction.ACTION_BASE_URL_HEADER;
+//import static com.dong.cbu.controller.MemberAction.ACTION_BASE_URL_HEADER;
 
 
 /**

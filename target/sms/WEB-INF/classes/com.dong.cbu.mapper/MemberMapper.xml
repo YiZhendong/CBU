@@ -8,7 +8,7 @@
         <result column="sex" property="sex" jdbcType="TINYINT"/>
         <result column="email" property="email" jdbcType="VARCHAR"/>
         <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
-        <result column="money" property="money" jdbcType="int"/>
+        <result column="money" property="money" jdbcType="BIGINT"/>
     </resultMap>
     <sql id="BaseColumnList">id,name,password,sex,email,birthday,money</sql>
 
@@ -19,9 +19,39 @@
     <insert id="insertMember" parameterType="com.dong.cbu.model.Member">
         INSERT INTO member (id,name,password,sex,email,birthday,money)
         VALUES
-        (#{id,jdbcType=BIGINT},#{name,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{sex,jdbcType=INT},#{email,jdbcType=VARCHAR},#{birthday,jdbcType=TIMESTAMP},#{money,jdbcType=INT})
+        (#{id,jdbcType=BIGINT},#{name,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{sex,jdbcType=BIGINT},#{email,jdbcType=VARCHAR},#{birthday,jdbcType=TIMESTAMP},#{money,jdbcType=BIGINT})
     </insert>
     <select id="loginMember" resultType="com.dong.cbu.model.Member" parameterType="String">
         SELECT <include refid="BaseColumnList"/>FROM member WHERE name = #{name,jdbcType=VARCHAR}
     </select>
+    
+    <select id="showOneMember" parameterType="int" resultType="com.dong.cbu.model.Member">
+        SELECT<include refid="BaseColumnList"/>from member WHERE id = #{id,jdbcType=BIGINT};
+    </select>
+
+    <select id="superUpdateMember" parameterType="com.dong.cbu.model.Member">
+        UPDATE member
+        <set>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=BIGINT},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,idbctype=int}
+    </select>
+
+    <select id="searchByScoreAndType" parameterType="int" resultType="Integer">
+        SELECT id FROM movie WHERE score >= #{score,jdbcType=BIGINT},type = #{type,jdbcType=BIGINT}
+    </select>
+
+    <select id="searchByName" parameterType="String" resultType="Integer">
+        SELECT id FROM movie WHERE name =#{name,jdbcType=VARCHAR }
+    </select>
+
+
 </mapper>

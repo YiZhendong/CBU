@@ -14,7 +14,7 @@ function register(){
             gender:$("#gender")
         };
         $.ajax({
-            url:/member/register.do,
+            url:"/member/register.do",
             type:"POST",
             contentType:"application/json",
             data:JSON.stringify(staff),
@@ -24,10 +24,10 @@ function register(){
                     location.href = ""
                 }
                 if(data.status == 6){
-                    alert("注册失败")；
+                    alert("注册失败");
                 }
                 if(data.status == 8){
-                    alert("用户已存在")；
+                    alert("用户已存在");
                 }
             
             },
