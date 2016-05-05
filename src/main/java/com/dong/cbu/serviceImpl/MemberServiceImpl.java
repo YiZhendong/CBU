@@ -3,13 +3,12 @@ package com.dong.cbu.serviceImpl;
 import com.dong.cbu.commom.Status;
 import com.dong.cbu.dao.CommentMapper;
 import com.dong.cbu.dao.MemberMapper;
-import com.dong.cbu.exception.MemberAlreadyExistException;
-import com.dong.cbu.exception.NotExistException;
-import com.dong.cbu.exception.PasswordNotMatchException;
-import com.dong.cbu.exception.UnknownException;
+import com.dong.cbu.dao.OrderTableMapper;
+import com.dong.cbu.exception.*;
 import com.dong.cbu.model.Comment;
 import com.dong.cbu.model.Member;
 import com.dong.cbu.model.Movie;
+import com.dong.cbu.model.OrderTable;
 import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.EncryptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,9 @@ public class MemberServiceImpl implements MemberService{
 
     @Autowired
     private CommentMapper commentMapper;
+
+    @Autowired
+    private OrderTableMapper ordertableMapper;
 
     @Override
     public Member login(String name,String password) throws NotExistException,PasswordNotMatchException{
@@ -74,6 +76,12 @@ public class MemberServiceImpl implements MemberService{
     public void comment(Comment comment)throws UnknownException{
         if (commentMapper.comment(comment) == Status.action_fail){
             throw new UnknownException();
+        }
+    }
+    @Override
+    public void order(OrderTable ordertable)throws MoneyNotEnoughException{
+        if (ordertableMapper.order(ordertable)== Status.action_fail){
+            throw new MoneyNotEnoughException();
         }
     }
 }

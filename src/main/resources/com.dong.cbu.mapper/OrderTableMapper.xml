@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper>
+    <insert id="order" parameterType="com.dong.cbu.model.OrderTable">
+        insert INTO ordertable (id,planId,memberId,seatId,money,state,created)
+        VALUES
+        (#{id,jdbcType=int},#{planId,jdbcType=int},#{memberId,jdbcType=int},#{seatId,jdbctype=int},#{money,jdbctype=int},
+        #{state,jdbcType=int},#{created,jdbctype=timestamp})
+    </insert>
+</mapper>

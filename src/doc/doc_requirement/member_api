@@ -220,10 +220,11 @@ url:/member/movie/order.do
 method:post
 Request:
 {
+    //更改member，只用传递一个id就可以了
     "member":
     {
         "id":123
-        "money":10          //余额
+        //"money":10
     }
     //这是一个数组，可能预定的不止一个座位
     "seat":
