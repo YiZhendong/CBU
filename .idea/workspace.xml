@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d164e4a-97d2-4187-9ec0-185bf261f93c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/model/Staff.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/sms/WEB-INF/classes/com/dong/cbu/model/Staff.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/sms.war" afterPath="$PROJECT_DIR$/target/sms.war" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/sms/WEB-INF/classes/com/dong/cbu/controller/MemberAction.class" afterPath="$PROJECT_DIR$/target/sms/WEB-INF/classes/com/dong/cbu/controller/MemberAction.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/sms/WEB-INF/classes/com/dong/cbu/model/Member.class" afterPath="$PROJECT_DIR$/target/sms/WEB-INF/classes/com/dong/cbu/model/Member.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/doc/doc_requirement/member_api" afterPath="$PROJECT_DIR$/src/doc/doc_requirement/member_api" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/controller/MemberAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/controller/MemberAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/model/Member.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/model/Member.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com.dong.cbu.mapper/MemberMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com.dong.cbu.mapper/MemberMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/login.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/login.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com.dong.cbu.mapper/MemberMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com.dong.cbu.mapper/MemberMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/sms/WEB-INF/classes/com.dong.cbu.mapper/MemberMapper.xml" afterPath="$PROJECT_DIR$/target/sms/WEB-INF/classes/com.dong.cbu.mapper/MemberMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/sms/js/login.js" afterPath="$PROJECT_DIR$/target/sms/js/login.js" />
@@ -1233,7 +1226,7 @@
       <workItem from="1462459860944" duration="3256000" />
       <workItem from="1462498756103" duration="4870000" />
       <workItem from="1462512739635" duration="8314000" />
-      <workItem from="1462547833190" duration="4333000" />
+      <workItem from="1462547833190" duration="4366000" />
     </task>
     <task id="LOCAL-00001" summary="暂时可以跳转到test，但是无法登陆和注册">
       <created>1462451178628</created>
@@ -1284,11 +1277,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462548148985</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="修改了前端的url">
+      <created>1462552421376</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1462552421376</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30153000" />
+    <option name="totallyTimeSpent" value="30186000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1342,7 +1342,8 @@
     <MESSAGE value="暂时可以跳转到test，但是无法登陆和注册" />
     <MESSAGE value="修改了一点bug&#10;" />
     <MESSAGE value="经过bug和学姐的帮助注册和登陆数据可以提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="经过bug和学姐的帮助注册和登陆数据可以提交" />
+    <MESSAGE value="修改了前端的url" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改了前端的url" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
