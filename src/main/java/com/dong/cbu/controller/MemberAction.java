@@ -37,6 +37,7 @@ public class MemberAction {
     @RequestMapping(value = ACTION_BASE_URL_HEADER + "/login.do",method = RequestMethod.POST)
     @ResponseBody
     public Object loginMember(@RequestParam("name")String name, @RequestParam("password")String password, HttpServletRequest request) {
+       System.out.println("++++++++++++++++++++"+name);
         int status;
         Member member = null;
         try{

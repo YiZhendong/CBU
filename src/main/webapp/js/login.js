@@ -6,7 +6,7 @@ $(function(){
       var username=$("#user").val();
       var password= $("#psw").val();
       var user={
-                username:username,
+                name:username,
                 password:password
       }
         $.ajax({

@@ -4,7 +4,7 @@
     <insert id="comment" parameterType="com.dong.cbu.model.Comment">
         insert INTO comment (id,title,keyword,clicks,detail,owenerId,createdId,movieId,preuserId)
         VALUES
-        (#{id,jdbcType=int},#{title,jdbcType=varchar},#{keyword,jdbcType=varchar},#{clicks,jdbctype=int},#{detail,jdbctype=varchar},
-        #{ownerId,jdbcType=int},#{createdId,jdbctype=int},#{movieId,jdbcType=int},#{preuserId,jdbcType=int})
+        (#{id,jdbcType=BIGINT},#{title,jdbcType=VARCHAR},#{keyword,jdbcType=VARCHAR},#{clicks,jdbctype=BIGINT},#{detail,jdbctype=VARCHAR},
+        #{ownerId,jdbcType=BIGINT},#{createdId,jdbctype=BIGINT},#{movieId,jdbcType=BIGINT},#{preuserId,jdbcType=BIGINT})
     </insert>
 </mapper>
