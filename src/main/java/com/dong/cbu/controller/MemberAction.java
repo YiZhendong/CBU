@@ -42,7 +42,7 @@ public class MemberAction {
         Member member = null;
         try{
             member = memberService.login(name,password);
-            status = member.getId();
+            status = member.getRank();
         }catch(NotExistException e){
             e.printStackTrace();
             status = Status.not_exits;
@@ -51,6 +51,7 @@ public class MemberAction {
             status = Status.password_not_correct;
         }
         SessionUtil.setLoginMember(request,member);
+        System.out.println("null "+status+member);
         return new Response(status,member);
     }
 

@@ -9,8 +9,9 @@
         <result column="email" property="email" jdbcType="VARCHAR"/>
         <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
         <result column="money" property="money" jdbcType="BIGINT"/>
+        <result column="rank" property="rank" jdbcType="BIGINT"/>
     </resultMap>
-    <sql id="BaseColumnList">id,name,password,sex,email,birthday,money</sql>
+    <sql id="BaseColumnList">id,name,password,sex,email,birthday,money,rank</sql>
 
     <select id="isMemberExists" parameterType="com.dong.cbu.model.Member" resultType="int">
         select count(name) from member where name = #{name,jdbcType=VARCHAR}

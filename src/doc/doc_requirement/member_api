@@ -26,6 +26,9 @@ table  member:
     `email` varchar(40) `邮箱`                //非必须
     `birthday`  date    `生日`                //非必须
     `money`     int(40) `账户余额`            //初始设置为100,
+    `rank`      int(1)  `类型`                //0：管理员1：老板2：客户经理3：用户4：游客
+
+    //2016/05/06删除了staff表
 
 
 table movie:
@@ -46,11 +49,7 @@ table comment:
     `movieId`   int(11)     `电影id`
     `preuserId` int(11)     `所回复作者的Id，就是说对哪个人评论，那个人的id`  //非必须
 
-table staff:
-    `id` int(11)    `职员id`
-    `loginName` varchar(40)     `登录名字`
-    `password`  char(11)        `密码`
-    `status`    tinyint         `身份`    0:staff 1:manager
+
 
     member action包括
     1.用户注册

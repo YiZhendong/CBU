@@ -12,6 +12,15 @@ public class Member {
     private String email;
     private String birthday;
     private int money;
+    private int rank;
+
+    public void setRank(int rank){
+        this.rank = rank;
+    }
+
+    public int getRank(){
+        return rank;
+    }
 
     public int getMoney() {
         return money;

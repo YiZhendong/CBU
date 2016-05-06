@@ -27,7 +27,7 @@ $(function(){
                      sessionStorage.email=message.email;
                      sessionStorage.birthday=message.birthday;
                      
-                     location.href = "Test_manager.html"
+                     location.href = "http://localhost:8080/html/Test_manager.html"
                 }
                 if(data.status== 1){
                     sessionStorage.userRank = "老板";// 用户身份
@@ -38,7 +38,7 @@ $(function(){
                      sessionStorage.email=message.email;
                      sessionStorage.birthday=message.birthday;
                      
-                     location.href = "Test_boss.html"
+                     location.href = "http://localhost:8080/html/Test_boss.html"
                 }
                 if(data.status== 2){
                     sessionStorage.userRank = "客户经理";// 用户身份
@@ -49,7 +49,7 @@ $(function(){
                      sessionStorage.email=message.email;
                      sessionStorage.birthday=message.birthday;
                      
-                     location.href = "Test_CustomerManager.html"
+                     location.href = "http://localhost:8080/html/Test_CustomerManager.html"
                 }
                 if(data.status== 3){
                     sessionStorage.userRank = "用户";// 用户身份
@@ -60,19 +60,16 @@ $(function(){
                      sessionStorage.email=message.email;
                      sessionStorage.birthday=message.birthday;
                      
-                     location.href = "Test_user.html"
+                     location.href = "http://localhost:8080/html/Test_user.html"
                 }
                 if(data.status == 7){
                     alert("用户不存在");
+                    location.href = "http://localhost:8080/html/login.html"
                 }
                 if(data.status == 9){
                     alert("密码不正确");
+                    location.href = "http://localhost:8080/html/login.html"
                 }
-                else{
-                    location.href = "Test_user.html"
-                }
-
-
             },
             error:function(){ console.log("发送ajax失败");}
         });
