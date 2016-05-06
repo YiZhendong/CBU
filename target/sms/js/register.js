@@ -7,19 +7,22 @@ $(function(){
 function register(){
 	$("#btn").click(function(){
         var staff = {
-            userName:$("#username").val(),
+            name:$("#username").val(),
             password:$("#password").val(),
-            box:$("#box").val(),
+            email:$("#box").val(),
             birthday:$("#birthday").val(),
-            gender:$("#gender")
+            sex:$("#gender").val()
         };
+        console.log(staff);
+        JSON.stringify(staff);
         $.ajax({
-            url:"/member/register.do",
+            url:"http://localhost:8080/member/register.do",
             type:"POST",
             contentType:"application/json",
             data:JSON.stringify(staff),
             success:function(data){
                 // 5成功,6失败,8用户名已存在
+                console.log(data);
                 if(data.status == 5){
                     location.href = ""
                 }
@@ -31,7 +34,7 @@ function register(){
                 }
             
             },
-            error:function(){ console.log("发送ajax失败");}
+            error:function(){ console.log("ajax失败");console.log(staff)}
         });
 	});
 }

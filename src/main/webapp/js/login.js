@@ -10,8 +10,7 @@ $(function(){
                 password:password
       }
         $.ajax({
-            url:"/member/login.do",
-            data:JSON.stringify(user),
+            url:"http://localhost:8080/member/login.do?name="+username +"&password="+ password,
             type:"POST",
             contentType:"application/json",
             success:function(data){
@@ -68,6 +67,9 @@ $(function(){
                 }
                 if(data.status == 9){
                     alert("密码不正确");
+                }
+                else{
+                    location.href = "Test_user.html"
                 }
 
 

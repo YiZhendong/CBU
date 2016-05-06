@@ -75,7 +75,7 @@ Request:
 {
     "name": "宋智孝",		                       //用户姓名
     "password": "test",	                       //密码
-    "sex",
+    "sex":1,
     "email",
     "birthday"
 }

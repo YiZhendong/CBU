@@ -60,6 +60,7 @@ public class MemberAction {
         int status = Status.action_success;
         try{
             memberService.insert(member);
+            System.out.println(member);
         }catch(MemberAlreadyExistException e){
             e.printStackTrace();
             status = Status.alreadyexits;
