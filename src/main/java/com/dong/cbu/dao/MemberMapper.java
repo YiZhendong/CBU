@@ -2,6 +2,7 @@ package com.dong.cbu.dao;
 
 import com.dong.cbu.model.Member;
 import com.dong.cbu.model.Movie;
+import com.dong.cbu.model.OrderTable;
 
 import java.util.List;
 

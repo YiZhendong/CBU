@@ -37,4 +37,7 @@ public interface MemberService {
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
     void order(OrderTable ordertable) throws MoneyNotEnoughException;
+
+    @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
+    List<OrderTable> showCheck(int id,List<OrderTable> orderTables)throws UnknownException;
 }

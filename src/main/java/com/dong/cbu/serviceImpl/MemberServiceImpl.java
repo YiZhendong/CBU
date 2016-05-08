@@ -84,4 +84,10 @@ public class MemberServiceImpl implements MemberService{
             throw new MoneyNotEnoughException();
         }
     }
+
+    @Override
+    public List<OrderTable> showCheck(int id,List<OrderTable> orderTables)throws UnknownException{
+        orderTables = ordertableMapper.showCheck(id);
+        return orderTables;
+    }
 }

@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-//import static com.dong.cbu.controller.MemberAction.ACTION_BASE_URL_HEADER;
 
 
 /**
@@ -101,7 +100,7 @@ public class MemberAction {
         return new Response(status);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/searchByScoreAndType.do",method = RequestMethod.POST)
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByScoreAndType.do",method = RequestMethod.POST)
     @ResponseBody
     public Object searchByScoreAndType(@RequestParam("score")int score,@RequestParam("type")int type){
         int status = Status.action_success;
@@ -115,7 +114,7 @@ public class MemberAction {
         return new Response(status,movies);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/comment.do",method = RequestMethod.POST)
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/comment.do",method = RequestMethod.POST)
     @ResponseBody
     public Object comment(HttpServletRequest request,@RequestBody Comment comment){
         int status = Status.action_success;
@@ -128,7 +127,7 @@ public class MemberAction {
         return new Response(status);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "order.do",method = RequestMethod.POST)
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/order.do",method = RequestMethod.POST)
     @ResponseBody
     public Object order(HttpServletRequest request, @RequestBody OrderTable ordertable){
         int status = Status.action_success;
@@ -139,5 +138,19 @@ public class MemberAction {
             status = Status.action_fail;
         }
         return new Response(status);
+    }
+
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/showCheck.do",method = RequestMethod.POST )
+    @ResponseBody
+    public Object showCheck(@RequestParam int id){
+        int status = Status.action_success;
+        List<OrderTable> orderTables = new ArrayList<>();
+        try{
+            orderTables = memberService.showCheck(id,orderTables);
+        }catch (UnknownException e){
+            e.printStackTrace();
+            status = Status.action_fail;
+        }
+        return new Response(status,orderTables);
     }
 }

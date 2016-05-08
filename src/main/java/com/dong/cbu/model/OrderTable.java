@@ -1,5 +1,7 @@
 package com.dong.cbu.model;
 
+import java.util.Date;
+
 /**
  * Created by zhendong on 2016/4/20.
  * email:myyizhendong@gmail.com
@@ -11,7 +13,7 @@ public class OrderTable {
     private int seatId;
     private int money;
     private int status;
-    private String created;
+    private Date created;
 
     public int getId() {
         return id;
@@ -61,11 +63,11 @@ public class OrderTable {
         this.status = status;
     }
 
-    public String getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 }
