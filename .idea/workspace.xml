@@ -4,13 +4,6 @@
     <list default="true" id="9d164e4a-97d2-4187-9ec0-185bf261f93c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/sms.war" afterPath="$PROJECT_DIR$/target/sms.war" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/controller/MemberAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/controller/MemberAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/dao/MemberMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/dao/MemberMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/dao/OrderTableMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/dao/OrderTableMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/model/OrderTable.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/model/OrderTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/service/MemberService.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/service/MemberService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dong/cbu/serviceImpl/MemberServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/dong/cbu/serviceImpl/MemberServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com.dong.cbu.mapper/OrderTableMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/com.dong.cbu.mapper/OrderTableMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/sms/js/login.js" afterPath="$PROJECT_DIR$/target/sms/js/login.js" />
     </list>
     <ignored path="CBU.iws" />
@@ -1244,7 +1237,7 @@
       <workItem from="1462608709466" duration="629000" />
       <workItem from="1462611800895" duration="1617000" />
       <workItem from="1462620592302" duration="406000" />
-      <workItem from="1462673832720" duration="3130000" />
+      <workItem from="1462673832720" duration="3193000" />
     </task>
     <task id="LOCAL-00001" summary="暂时可以跳转到test，但是无法登陆和注册">
       <created>1462451178628</created>
@@ -1309,11 +1302,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462552439720</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="完成显示订单逻辑">
+      <created>1462678032306</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1462678032306</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36252000" />
+    <option name="totallyTimeSpent" value="36315000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1376,7 +1376,8 @@
     <MESSAGE value="修改了一点bug&#10;" />
     <MESSAGE value="经过bug和学姐的帮助注册和登陆数据可以提交" />
     <MESSAGE value="修改了前端的url" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了前端的url" />
+    <MESSAGE value="完成显示订单逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成显示订单逻辑" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
