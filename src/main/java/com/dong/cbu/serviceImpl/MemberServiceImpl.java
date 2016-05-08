@@ -4,11 +4,9 @@ import com.dong.cbu.commom.Status;
 import com.dong.cbu.dao.CommentMapper;
 import com.dong.cbu.dao.MemberMapper;
 import com.dong.cbu.dao.OrderTableMapper;
+import com.dong.cbu.dao.PlanMapper;
 import com.dong.cbu.exception.*;
-import com.dong.cbu.model.Comment;
-import com.dong.cbu.model.Member;
-import com.dong.cbu.model.Movie;
-import com.dong.cbu.model.OrderTable;
+import com.dong.cbu.model.*;
 import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.EncryptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +28,9 @@ public class MemberServiceImpl implements MemberService{
 
     @Autowired
     private OrderTableMapper ordertableMapper;
+
+    @Autowired
+    private PlanMapper planMapper;
 
     @Override
     public Member login(String name,String password) throws NotExistException,PasswordNotMatchException{
@@ -89,5 +90,12 @@ public class MemberServiceImpl implements MemberService{
     public List<OrderTable> showCheck(int id,List<OrderTable> orderTables)throws UnknownException{
         orderTables = ordertableMapper.showCheck(id);
         return orderTables;
+    }
+
+    @Override
+    public void makePlan(Plan plan)throws UnknownException{
+        if(planMapper.makePlan(plan) ==Status.action_fail){
+            throw new UnknownException();
+        }
     }
 }

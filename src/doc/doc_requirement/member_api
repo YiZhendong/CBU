@@ -281,21 +281,6 @@ Request:
         }
     }
 
-    9.退订单
-    url:/member/moive/returnMoney.do
-    method:post
-    request:
-    {
-        orderTable_id:123
-    }
-    response:
-    {
-        "status":5
-        "body":
-        {
-            null
-        }
-    }
 
 
 

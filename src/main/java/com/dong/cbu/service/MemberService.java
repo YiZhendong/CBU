@@ -2,10 +2,7 @@ package com.dong.cbu.service;
 
 import com.dong.cbu.exception.*;
 
-import com.dong.cbu.model.Comment;
-import com.dong.cbu.model.Member;
-import com.dong.cbu.model.Movie;
-import com.dong.cbu.model.OrderTable;
+import com.dong.cbu.model.*;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -40,4 +37,7 @@ public interface MemberService {
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
     List<OrderTable> showCheck(int id,List<OrderTable> orderTables)throws UnknownException;
+
+    @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
+    void makePlan(Plan plan) throws UnknownException;
 }

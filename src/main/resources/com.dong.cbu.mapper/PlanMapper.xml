@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dong.cbu.dao.PlanMapper">
+    <resultMap id="BaseResultMap" type="com.dong.cbu.model.Plan">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="staffId" property="staffId" jdbcType="BIGINT"/>
+        <result column="movieId" property="movieId" jdbcType="BIGINT"/>
+        <result column="beginning" property="beginning" jdbcType="Date"/>
+        <result column="ending" property="ending" jdbcType="Date"/>
+        <result column="money" property="money" jdbcType="BIGINT"/>
+        <result column="state" property="state" jdbcType="BIGINT"/>
+    </resultMap>
+    <insert id="makePlan" parameterType="com.dong.cbu.model.Plan">
+        INSERT INTO plan (id,staffId,movieId,beginning,ending,money,state)
+        VALUES
+        (#{id,jdbcType=BIGINT},#{staffId,jdbcType=BIGINT},#{movieId,jdbcType=BIGINT},#{beginning,jdbcType=DATE},
+        #{ending,jdbcType=DATE},#{money,jdbcType=BIGINT},#{state,jdbcType=BIGINT})
+    </insert>
+</mapper>

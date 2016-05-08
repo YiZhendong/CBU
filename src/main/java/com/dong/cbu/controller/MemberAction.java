@@ -3,10 +3,7 @@ package com.dong.cbu.controller;
 import com.dong.cbu.commom.Response;
 import com.dong.cbu.commom.Status;
 import com.dong.cbu.exception.*;
-import com.dong.cbu.model.Comment;
-import com.dong.cbu.model.Member;
-import com.dong.cbu.model.Movie;
-import com.dong.cbu.model.OrderTable;
+import com.dong.cbu.model.*;
 import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.SessionUtil;
 import com.dong.cbu.validator.MemberAddValidator;
@@ -20,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dong.cbu.controller.MemberAction.ACTION_BASE_URL_HEADER;
 
 
 /**
@@ -152,5 +150,18 @@ public class MemberAction {
             status = Status.action_fail;
         }
         return new Response(status,orderTables);
+    }
+
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/staff/makePlan.do",method = RequestMethod.POST)
+    @ResponseBody
+    public Object makePlan(HttpServletRequest request,@RequestBody Plan plan){
+        int status = Status.action_success;
+        try{
+            memberService.makePlan(plan);
+        }catch (UnknownException e){
+            e.printStackTrace();
+            status = Status.action_fail;
+        }
+        return new Response(status);
     }
 }

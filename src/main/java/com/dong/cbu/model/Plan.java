@@ -1,5 +1,7 @@
 package com.dong.cbu.model;
 
+import java.util.Date;
+
 /**
  * Created by zhendong on 2016/4/20.
  * email:myyizhendong@gmail.com
@@ -8,8 +10,8 @@ public class Plan {
     private int id;
     private int staffId;
     private int movieId;
-    private String beginning;
-    private String ending;
+    private Date beginning;
+    private Date ending;
     private int money;
     private int state;
 
@@ -37,19 +39,19 @@ public class Plan {
         this.movieId = movieId;
     }
 
-    public String getBeginning() {
+    public Date getBeginning() {
         return beginning;
     }
 
-    public void setBeginning(String beginning) {
+    public void setBeginning(Date beginning) {
         this.beginning = beginning;
     }
 
-    public String getEnding() {
+    public Date getEnding() {
         return ending;
     }
 
-    public void setEnding(String ending) {
+    public void setEnding(Date ending) {
         this.ending = ending;
     }
 
