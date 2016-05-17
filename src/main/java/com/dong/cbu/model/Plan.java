@@ -14,6 +14,33 @@ public class Plan {
     private Date ending;
     private int money;
     private int state;
+    private int income;
+    private int leftTickets;
+    private int soldTickets;
+
+    public int getIncome() {
+        return income;
+    }
+
+    public void setIncome(int income) {
+        this.income = income;
+    }
+
+    public int getLeftTickets() {
+        return leftTickets;
+    }
+
+    public void setLeftTickets(int leftTickets) {
+        this.leftTickets = leftTickets;
+    }
+
+    public int getSoldTickets() {
+        return soldTickets;
+    }
+
+    public void setSoldTickets(int soldTickets) {
+        this.soldTickets = soldTickets;
+    }
 
     public int getId() {
         return id;
