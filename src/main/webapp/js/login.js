@@ -14,7 +14,7 @@ $(function(){
             type:"POST",
             contentType:"application/json",
             success:function(data){
-
+                console.log(data)
                 var message = eval(data.body);
 
                  //0管理员 1老板 2客户经理 3用户 7用户不存在 9密码不正确
@@ -73,7 +73,6 @@ $(function(){
             },
             error:function(){ console.log("发送ajax失败");}
         });
-
     });
     //检查是否为空
     function checkNull(){
