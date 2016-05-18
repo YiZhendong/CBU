@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-        <mapper namespace="com.dong.cbu.dao.MemberMapper">
+<mapper namespace="com.dong.cbu.dao.MemberMapper">
     <resultMap id="BaseResultMap" type="com.dong.cbu.model.Member">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
@@ -25,7 +25,7 @@
     <select id="loginMember" resultType="com.dong.cbu.model.Member" parameterType="String">
         SELECT <include refid="BaseColumnList"/>FROM member WHERE name = #{name,jdbcType=VARCHAR}
     </select>
-    
+
     <select id="showOneMember" parameterType="int" resultType="com.dong.cbu.model.Member">
         SELECT<include refid="BaseColumnList"/>from member WHERE id = #{id,jdbcType=BIGINT};
     </select>

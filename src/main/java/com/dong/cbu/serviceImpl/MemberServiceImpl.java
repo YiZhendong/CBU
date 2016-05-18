@@ -4,7 +4,6 @@ import com.dong.cbu.commom.Status;
 import com.dong.cbu.dao.CommentMapper;
 import com.dong.cbu.dao.MemberMapper;
 import com.dong.cbu.dao.OrderTableMapper;
-import com.dong.cbu.dao.PlanMapper;
 import com.dong.cbu.exception.*;
 import com.dong.cbu.model.*;
 import com.dong.cbu.service.MemberService;
@@ -29,8 +28,6 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     private OrderTableMapper ordertableMapper;
 
-    @Autowired
-    private PlanMapper planMapper;
 
     @Override
     public Member login(String name,String password) throws NotExistException,PasswordNotMatchException{
@@ -83,19 +80,6 @@ public class MemberServiceImpl implements MemberService{
     public void order(OrderTable ordertable)throws MoneyNotEnoughException{
         if (ordertableMapper.order(ordertable)== Status.action_fail){
             throw new MoneyNotEnoughException();
-        }
-    }
-
-    @Override
-    public List<OrderTable> showCheck(int id,List<OrderTable> orderTables)throws UnknownException{
-        orderTables = ordertableMapper.showCheck(id);
-        return orderTables;
-    }
-
-    @Override
-    public void makePlan(Plan plan)throws UnknownException{
-        if(planMapper.makePlan(plan) ==Status.action_fail){
-            throw new UnknownException();
         }
     }
 }

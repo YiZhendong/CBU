@@ -38,7 +38,7 @@ $(function(){
                      sessionStorage.email=message.email;
                      sessionStorage.birthday=message.birthday;
                      
-                     location.href = "http://localhost:8080/html/Test_boss.html"
+                     location.href = "http://localhost:8080/html/index.html"
                 }
                 if(data.status== 2){
                     sessionStorage.userRank = "客户经理";// 用户身份

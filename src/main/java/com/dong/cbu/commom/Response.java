@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * Created by zhendong on 2016/4/25.
  * email:myyizhendong@gmail.com
- *
  */
 public class Response {
     protected int status;
