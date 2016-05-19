@@ -44,6 +44,7 @@
             </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
+
     </select>
 
     <select id="searchByScoreAndType" parameterType="int" resultType="Integer">

@@ -26,7 +26,7 @@ table  member:
     `email` varchar(40) `邮箱`                //非必须
     `birthday`  date    `生日`                //非必须
     `money`     int(40) `账户余额`            //初始设置为100,
-    `rank`      int(1)  `类型`                //0：管理员1：老板2：客户经理3：用户4：游客
+    `rank`      int(1)  `类型`                //0:用户1:老板2:客户经理3:游客
 
     //2016/05/06删除了staff表
 
@@ -91,15 +91,15 @@ url:/member/login.do
 method:post
 url params:
 {
-    loginName=test,                             //String 登录名
-    password=test,                              //String 密码
+    "name"=user1,                             //String 登录名
+    "password"=111111,                              //String 密码
 }
 Response:
 {
     "status": 3,                                //0管理员 1老板 2客户经理 3用户 7用户不存在 9密码不正确
     "body": {
         "id": 7,
-        "Name": "李光洙",
+        "name": "李光洙",
         "password": "",
         "sex": "test",
         "email": ,
@@ -112,15 +112,15 @@ Response:
 url:/member/showOneMember.do
 method:post
 url params:
-{
-    id,
-}
+(
+    id=1,
+)
 Response
 {
     "status": 3,                                //0管理员 1老板 2客户经理 3用户
         "body": {
             "id": 7,
-            "Name": "刘在石",
+            "name": "刘在石",
             "password": "",
             "sex": "test",
             "email": ,
@@ -134,8 +134,8 @@ url:/member/superUpdateMember.do
 method:post
 Request:
 {
-    "id": 7,
-     "Name": "狗哥",
+     "id": 7,
+     "name": "狗哥",
      "password": "",
      "sex": "test",
      "email": ,
