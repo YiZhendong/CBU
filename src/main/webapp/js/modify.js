@@ -32,7 +32,7 @@ function register(){
         console.log(staff);
         JSON.stringify(staff);
         $.ajax({
-            url:"http://localhost:8080/member/register.do",
+            url:"http://localhost:8080/member/superUpdateMember.do",
             type:"POST",
             contentType:"application/json",
             data:JSON.stringify(staff),
