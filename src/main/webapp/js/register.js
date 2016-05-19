@@ -24,7 +24,7 @@ function register(){
                 // 5成功,6失败,8用户名已存在
                 console.log(data);
                 if(data.status == 5){
-                    location.href = ""
+                    location.href = "http://localhost:8080/html/index_reg.html"
                 }
                 if(data.status == 6){
                     alert("注册失败");

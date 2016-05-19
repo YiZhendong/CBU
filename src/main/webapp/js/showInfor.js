@@ -8,7 +8,6 @@ $(function(){
     var email=sessionStorage.email;
     var birthday=sessionStorage.birthday;
     var sex=sessionStorage.sex;
-
     $("#username").val(loginName);
     $("#password").val(password);
     $("#box").val(email);

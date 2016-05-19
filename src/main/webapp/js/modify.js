@@ -26,8 +26,8 @@ function register(){
             name:$("#username").val(),
             password:$("#password").val(),
             email:$("#box").val(),
-            birthday:$("#birthday").val(),
-            sex:$("#gender").val()
+            sex:$("#gender").val(),
+            birthday:$("#birthday").val()
         };
         console.log(staff);
         JSON.stringify(staff);
