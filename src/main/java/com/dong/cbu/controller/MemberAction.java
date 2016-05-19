@@ -65,11 +65,15 @@ public class MemberAction {
         }catch(MemberAlreadyExistException e){
             e.printStackTrace();
             status = Status.alreadyexits;
+            member = null;
+            return new Response(status,member);
         }catch(UnknownException e){
             e.printStackTrace();
             status = Status.action_fail;
+            member = null;
+            return new Response(status,member);
         }
-        return new Response(status);
+        return new Response(status,member);
     }
 
     @RequestMapping(value = ACTION_BASE_URL_HEADER + "/showOneMember.do",method = RequestMethod.POST)
