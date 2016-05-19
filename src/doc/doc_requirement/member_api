@@ -81,7 +81,14 @@ Request:
 Response:
 {
     "status": 12,                               //status 5成功,6失败,8用户名已存在
-    "body": null
+    "body": {
+            "id": 7,
+            "name": "李光洙",
+            "password": "",
+            "sex": "test",
+            "email": ,
+            "bitrhday":
+        }
 }
 
 
