@@ -2,6 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" a href="../css/index.css" >
+    <link rel="stylesheet" type="text/css" a href="../css/reset.css" >
+    <link rel="stylesheet" type="text/css" a href="../css/style.css" >
     <link rel="stylesheet" type="text/css" a href="../../../../../cbu-master/src/main/webapp/css/index.css" >
     <link rel="stylesheet" type="text/css" a href="../../../../../cbu-master/src/main/webapp/css/reset.css" >
     <link rel="stylesheet" type="text/css" a href="../../../../../cbu-master/src/main/webapp/css/style.css" >
@@ -16,7 +19,6 @@
         <li><a href="#">音乐</a></li>
         <li><a href="#">阅读</a></li>
         <li><a href="#">FM</a></li>
-        <li><a href="#">个人信息</a></li>
         <li><a href="#">大王叫我来巡山</a> <a>退出</a></li>
         <li><a href="#">管理员</a></li>
     </ul>
@@ -34,10 +36,11 @@
             <div><label>生日：</label><input type="text" id="birthday" name="birthday" readonly="readonly"></div>
             <div><label>性别：</label><input type="text" id="gender" name="gender" readonly="readonly"></div>
             <div><label>账户余额：</label><input type="text" id="fund" name="fund" readonly="readonly"></div>
-            <input id="btn" class="btn" type="submit" value="修 改">
+            <a href="http://localhost:8080/html/admin_infor_correct.html">修改</a>
         </form>
     </div>
 </div><!-- container -->
-
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/showInfor.js"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
             <li><a href="#">音乐</a></li>
             <li><a href="#">阅读</a></li>
             <li><a href="#">FM</a></li>
-            <li><a href="#">个人信息</a></li>
+            <li><a href="http://localhost:8080/html/admin_infor.html">个人信息</a></li>
             <li class="user-name"><a href="#">大王叫我来巡山</a> <a>退出</a></li>
             <li  class="user-identity"><a href="#">管理员</a></li>
          </ul>
@@ -25,6 +25,12 @@
 		    <input type="text" class="search_keyword" id="search" name="search"/>
             <input type="submit" class="search_btn" id="search_btn" name="search_btn" value="搜&nbsp;&nbsp;&nbsp;索">
         </div>
+        <select name="filmtype" id="filmtype">
+            <option value="0">爱情</option>
+            <option value="1">动作</option>
+            <option value="2">动画</option>
+
+        </select>
         </form>
         <div class= "onshow">
             <div class= "span_title">正在上映</div>
@@ -144,8 +150,8 @@
     <script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
 
     <script type="text/javascript">
-
-
+        $(function(){
+            alert('hello');
         var user={};
         user.userId = parseInt(sessionStorage.Id);
         user.userRank = sessionStorage.userRank;//字符串
@@ -156,52 +162,38 @@
         $(".user-identity").html(user.userRank);
         $(".user-name").html(user.loginName+"<span>|</span><a href='javascript:;'>退出</a>");
 
-
         //搜索
+        search();
+        });
+       function search(){
 
+                $("#search_btn").click(function(){
+                    alert('click')
+                    var searchkey = {
+                        name:$("#search").val(),
+                        type:$("#filmtype").val()
 
-        //测试
-        function myFunction()
-        {
-            $(".footer").html("Hello jQuery");
-            alert('dejj'+user.loginName+user.Id);
-        }
-        $(document).ready(myFunction);
-
-
-        $(function(){
-
-            alert（'i am ok'）
-            //登陆的提交事件
-            $("#search_btn").click(function(){
-
-                var search=$("#search").val();
-
-                var user={
-                    name:search,
-
-                };
-                $.ajax({
-                    url:"http://localhost:8080//member/movie/searchByName.do?name="+search,
-                    type:"POST",
-                    contentType:"application/json",
-                    success:function(data){
-                        var search = eval(data.body);
-
-
-                        sessionStorage.filmName = message.name;
-                        sessionStorage.filmId = message.id;
-                        sessionStorage.score=message.score;
-
-                        location.href = "http://localhost:8080/html/search_page.html"
-                    },
-                    error:function(){ console.log("发送ajax失败");}
+                    };
+                    var json = JSON.stringify(searchkey);
+                    alert(json);
+                    /*console.log(searchkey);
+                    JSON.stringify(searchkey);
+                    $.ajax({
+                        url:"http://localhost:8080/member/movie/searchByName.do
+                        type:"POST",
+                        contentType:"application/json"
+                        data:JSON.stringify(searchkey),
+                        success:function(){
+                            alert("修改成功！");
+                        },
+                        error:function(){ console.log("ajax失败");console.log(staff)}
+                    });*/
                 });
 
-            });
-        });
+        }
 
 
     </script>
+
 </body>
 </html>

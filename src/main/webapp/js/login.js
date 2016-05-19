@@ -14,14 +14,14 @@ $(function(){
             type:"POST",
             contentType:"application/json",
             success:function(data){
-
+                console.log(data)
                 var message = eval(data.body);
 
                  //0管理员 1老板 2客户经理 3用户 7用户不存在 9密码不正确
                 if(data.status == 0){
                      sessionStorage.userRank = "管理员";// 用户身份
                      sessionStorage.Id = message.id;
-                     sessionStorage.loginName = message.Name;
+                     sessionStorage.loginName = message.name;
                      sessionStorage.password = message.password;
                      sessionStorage.sex=message.sex;
                      sessionStorage.email=message.email;
@@ -32,18 +32,17 @@ $(function(){
                 if(data.status== 1){
                     sessionStorage.userRank = "老板";// 用户身份
                     sessionStorage.Id = message.id;
-                     sessionStorage.loginName = message.Name;
+                     sessionStorage.loginName = message.name;
                      sessionStorage.password = message.password;
                      sessionStorage.sex=message.sex;
                      sessionStorage.email=message.email;
                      sessionStorage.birthday=message.birthday;
-                     
                      location.href = "http://localhost:8080/html/index_reg.html"
                 }
                 if(data.status== 2){
                     sessionStorage.userRank = "客户经理";// 用户身份
                     sessionStorage.Id = message.id;
-                     sessionStorage.loginName = message.Name;
+                     sessionStorage.loginName = message.name;
                      sessionStorage.password = message.password;
                      sessionStorage.sex=message.sex;
                      sessionStorage.email=message.email;
@@ -54,7 +53,7 @@ $(function(){
                 if(data.status== 3){
                     sessionStorage.userRank = "用户";// 用户身份
                     sessionStorage.Id = message.id;
-                     sessionStorage.loginName = message.Name;
+                     sessionStorage.loginName = message.name;
                      sessionStorage.password = message.password;
                      sessionStorage.sex=message.sex;
                      sessionStorage.email=message.email;
@@ -73,7 +72,6 @@ $(function(){
             },
             error:function(){ console.log("发送ajax失败");}
         });
-
     });
     //检查是否为空
     function checkNull(){

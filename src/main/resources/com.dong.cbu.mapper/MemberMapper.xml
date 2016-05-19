@@ -43,7 +43,8 @@
                 birthday = #{birthday,jdbcType=VARCHAR},
             </if>
         </set>
-        where id = #{id,idbctype=int}
+        where id = #{id,jdbcType=BIGINT}
+
     </select>
 
     <select id="searchByScoreAndType" parameterType="int" resultType="Integer">

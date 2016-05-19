@@ -1,5 +1,29 @@
 $(function(){
 
+    alert('hello')
+    var user={};
+    user.userId = parseInt(sessionStorage.Id);
+    user.userRank = sessionStorage.userRank;//字符串
+    user.loginName =sessionStorage.loginName;
+
+
+    //登录后的标题栏显示
+    $(".user-identity").html(user.userRank);
+    $(".user-name").html(user.loginName+"<span>|</span><a href='javascript:;'>退出</a>");
+
+    search();
+});
+function search() {
+    $("#btn").click(function(){
+        var staff = {
+            name:$("#username").val(),
+            password:$("#password").val(),
+            email:$("#box").val(),
+            sex:$("#gender").val(),
+            birthday:$("#birthday").val()
+        };
+}
+/*
     alert（'i am ok'）
     //登陆的提交事件
     $("#search_btn").click(function(){
@@ -28,4 +52,5 @@ $(function(){
         });
 
     });
+    */
 });

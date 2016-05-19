@@ -1,4 +1,20 @@
 $(function(){
+    // 获取当前员工信息
+
+    var userId = parseInt(sessionStorage.Id);
+    var userRank = sessionStorage.userRank;//字符串
+    var loginName =sessionStorage.loginName;
+    var password =sessionStorage.password;
+    var email=sessionStorage.email;
+    var birthday=sessionStorage.birthday;
+    var sex=sessionStorage.sex;
+
+    $("#username").val(loginName);
+    $("#password").val(password);
+    $("#box").val(email);
+    $("#birthday").val(birthday);
+    $("#gender").val(sex);
+
     checkNull();
     register();     //提交注册信息
 
@@ -10,29 +26,18 @@ function register(){
             name:$("#username").val(),
             password:$("#password").val(),
             email:$("#box").val(),
-            birthday:$("#birthday").val(),
-            sex:$("#gender").val()
+            sex:$("#gender").val(),
+            birthday:$("#birthday").val()
         };
         console.log(staff);
         JSON.stringify(staff);
         $.ajax({
-            url:"http://localhost:8080/member/register.do",
+            url:"http://localhost:8080/member/superUpdateMember.do",
             type:"POST",
             contentType:"application/json",
             data:JSON.stringify(staff),
-            success:function(data){
-                // 5成功,6失败,8用户名已存在
-                console.log(data);
-                if(data.status == 5){
-                    location.href = "http://localhost:8080/html/index_reg.html"
-                }
-                if(data.status == 6){
-                    alert("注册失败");
-                }
-                if(data.status == 8){
-                    alert("用户已存在");
-                }
-            
+            success:function(){
+                alert("修改成功！");
             },
             error:function(){ console.log("ajax失败");console.log(staff)}
         });
