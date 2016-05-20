@@ -10,6 +10,7 @@ import com.dong.cbu.model.OrderTable;
 import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.SessionUtil;
 import com.dong.cbu.validator.MemberAddValidator;
+import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -105,16 +106,32 @@ public class MemberAction {
         return new Response(status);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/searchByScoreAndType.do",method = RequestMethod.POST)
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByScoreAndType.do",method = RequestMethod.POST)
     @ResponseBody
-    public Object searchByScoreAndType(@RequestParam("score")int score,@RequestParam("type")int type){
+    public Object searchByScoreAndType(@RequestParam("score")int score,@RequestParam("type")int type ,HttpServletRequest request){
         int status = Status.action_success;
+        System.out.print(score+"+++++++++++++"+type);
         List<Movie> movies = new ArrayList<Movie>();
         try{
             movies = memberService.searchByScoreAndType(score,type,movies);
         }catch (NotExistException e){
             e.printStackTrace();
             status = Status.action_fail;
+        }
+        return new Response(status,movies);
+    }
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByName.do",method = RequestMethod.POST)
+    @ResponseBody
+    public Object searchByName(HttpServletRequest request ,@RequestParam("name") String name){
+        int status = Status.action_success;
+        System.out.println("this is a searchByName test"+name);
+        List<Movie> movies = new ArrayList<>();
+        try{
+            movies = memberService.searchByName(name,movies);
+        }catch (NotExistException e){
+            e.printStackTrace();
+            status = Status.action_fail;
+            return new Response(status,movies);
         }
         return new Response(status,movies);
     }

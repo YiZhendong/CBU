@@ -71,6 +71,12 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public List<Movie> searchByName(String name,List<Movie> movies)throws NotExistException{
+        movies = memberMapper.searchByName(name);
+        return movies;
+    }
+
+    @Override
     public void comment(Comment comment)throws UnknownException{
         if (commentMapper.comment(comment) == Status.action_fail){
             throw new UnknownException();
