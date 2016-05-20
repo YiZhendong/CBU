@@ -25,6 +25,12 @@
 		    <input type="text" class="search_keyword" id="search" name="search"/>
             <input type="submit" class="search_btn" id="search_btn" name="search_btn" value="搜&nbsp;&nbsp;&nbsp;索">
         </div>
+        <select name="filmtype" id="filmtype">
+            <option value="0">爱情</option>
+            <option value="1">动作</option>
+            <option value="2">动画</option>
+
+        </select>
         </form>
         <div class= "onshow">
             <div class= "span_title">正在上映</div>
@@ -142,5 +148,52 @@
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            alert('hello');
+        var user={};
+        user.userId = parseInt(sessionStorage.Id);
+        user.userRank = sessionStorage.userRank;//字符串
+        user.loginName =sessionStorage.loginName;
+
+
+        //登录后的标题栏显示
+        $(".user-identity").html(user.userRank);
+        $(".user-name").html(user.loginName+"<span>|</span><a href='javascript:;'>退出</a>");
+
+        //搜索
+        search();
+        });
+       function search(){
+
+                $("#search_btn").click(function(){
+                    alert('click')
+                    var searchkey = {
+                        name:$("#search").val(),
+                        type:$("#filmtype").val()
+
+                    };
+                    var json = JSON.stringify(searchkey);
+                    alert(json);
+                    /*console.log(searchkey);
+                    JSON.stringify(searchkey);
+                    $.ajax({
+                        url:"http://localhost:8080/member/movie/searchByName.do
+                        type:"POST",
+                        contentType:"application/json"
+                        data:JSON.stringify(searchkey),
+                        success:function(){
+                            alert("修改成功！");
+                        },
+                        error:function(){ console.log("ajax失败");console.log(staff)}
+                    });*/
+                });
+
+        }
+
+
+    </script>
+
 </body>
 </html>

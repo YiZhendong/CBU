@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" a href="../css/index.css" >
+    <title>搜索电影</title>
+</head>
+
+<body>
+<div class= "header">
+    <ul class= "navigation">
+        <li><a href="#">电影</a></li>
+        <li><a href="#">期刊</a></li>
+        <li><a href="#">音乐</a></li>
+        <li><a href="#">阅读</a></li>
+        <li><a href="#">FM</a></li>
+        <li><a href="#">注册</a></li>
+        <li><a href="#">登录</a></li>
+    </ul>
+</div>
+<div class= "content">
+    <form>
+        <div class= "search">
+            <input type="text" class="search_keyword" id="search" name="search"/>
+            <input type="submit" class="search_btn" id="search_btn" name="search_btn" value="搜&nbsp;&nbsp;&nbsp;索">
+        </div>
+    </form>
+
+    <div class="movie_display">
+        <div class= "span_title">搜索结果</div>
+        <div class="cate_movie">
+            <img class="cate_poster" src="../image/poster3.jpg">
+            <p class="cate_poster_title">哈尔的移动城堡</p><p class="cate_poster_band">8.5</p>
+        </div>
+        <div class="cate_movie">
+            <img class="cate_poster" src="../image/poster1.jpg">
+            <p class="cate_poster_title">哈尔的移动城堡</p><p class="cate_poster_band">8.5</p>
+        </div>
+        <div class="cate_movie">
+            <img class="cate_poster" src="../image/poster2.jpg">
+            <p class="cate_poster_title">哈尔的移动城堡</p><p class="cate_poster_band">8.5</p>
+        </div>
+        <div class="cate_movie">
+            <img class="cate_poster" src="../image/poster3.jpg">
+            <p class="cate_poster_title">哈尔的移动城堡</p><p class="cate_poster_band">8.5</p>
+        </div>
+        <div class="cate_movie">
+            <img class="cate_poster" src="../image/poster4.jpg">
+            <p class="cate_poster_title">哈尔的移动城堡</p><p class="cate_poster_band">8.5</p>
+        </div>
+        <div class="cate_movie">
+            <img class="cate_poster" src="../image/poster1.jpg">
+            <p class="cate_poster_title">哈尔的移动城堡</p><p class="cate_poster_band">8.5</p>
+        </div>
+        <div class="cate_movie">
+            <img class="cate_poster" src="../image/poster2.jpg">
+            <p class="cate_poster_title">哈尔的移动城堡</p><p class="cate_poster_band">8.5</p>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+<script>
+    var film={};
+    film.filmId = parseInt(sessionStorage.Id);
+    film.filmname = sessionStorage.name;//字符串
+    film.score =sessionStorage.score;
+
+    sessionStorage.filmName = film.name;
+    sessionStorage.filmId = film.id;
+    sessionStorage.score= film.score;
+
+
+    //登录后的标题栏显示
+    $(".cate_poster_title").html(film.filmname);
+    $(".cate_poster_band").html(user.score+"<span>|</span><a href='javascript:;'>退出</a>");
+</script>
+</body>
+</html>
