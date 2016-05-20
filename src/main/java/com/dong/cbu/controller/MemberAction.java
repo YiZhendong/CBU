@@ -120,6 +120,20 @@ public class MemberAction {
         }
         return new Response(status,movies);
     }
+    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByScore.do",method = RequestMethod.POST)
+    @ResponseBody
+    public Object searchByScore(@RequestParam("score")int score,HttpServletRequest request){
+        int status = Status.action_success;
+        System.out.print(score+"+++++++++++++");
+        List<Movie> movies = new ArrayList<Movie>();
+        try{
+            movies = memberService.searchByScore(score,movies);
+        }catch (NotExistException e){
+            e.printStackTrace();
+            status = Status.action_fail;
+        }
+        return new Response(status,movies);
+    }
     @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByName.do",method = RequestMethod.POST)
     @ResponseBody
     public Object searchByName(HttpServletRequest request ,@RequestParam("name") String name){

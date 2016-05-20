@@ -47,8 +47,18 @@
 
     </select>
 
-    <select id="searchByScoreAndType" parameterType="int" resultType="Integer">
-        SELECT id FROM movie m,type t WHERE m.id = t.movieId and m.score >= #{m.score,jdbcType=BIGINT} and t.type = #{type,jdbcType=BIGINT}
+    <select id="searchByScoreAndType" parameterType="Map" resultType="com.dong.cbu.model.Movie">
+
+        SELECT *
+        FROM movie
+        WHERE score >=#{score,jdbcType=BIGINT}
+    </select>
+
+    <select id="searchByScore" parameterType="Int" resultType="com.dong.cbu.model.Movie">
+
+        SELECT *
+        FROM movie
+        WHERE score >=#{score,jdbcType=BIGINT}
     </select>
 
     <select id="searchByName" parameterType="String" resultType="Integer">

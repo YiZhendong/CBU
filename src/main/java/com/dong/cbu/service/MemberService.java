@@ -30,6 +30,9 @@ public interface MemberService {
     List<Movie> searchByScoreAndType(int score,int type,List<Movie> movies)throws NotExistException;
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
+    List<Movie> searchByScore(int score,List<Movie> movies)throws NotExistException;
+
+    @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
     List<Movie> searchByName(String name,List<Movie> movies)throws NotExistException;
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)

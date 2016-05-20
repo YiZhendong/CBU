@@ -18,5 +18,6 @@ public interface MemberMapper {
     Member showOneMember(int id);
     void superUpdateMember(Member member);
     List<Movie> searchByScoreAndType(int score,int type);
+    List<Movie> searchByScore(int score);
     List<Movie> searchByName(String name);
 }
