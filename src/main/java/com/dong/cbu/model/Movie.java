@@ -6,10 +6,33 @@ package com.dong.cbu.model;
  */
 public class Movie {
     private int id;
+    private String introduction;
+    private int status;
+    private float score;
     private String name;
-    private int directorId;
-    private int actorId;
-    private int count;
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
 
     public int getId() {
         return id;
@@ -27,39 +50,6 @@ public class Movie {
         this.name = name;
     }
 
-    public int getDirectorId() {
-        return directorId;
-    }
-
-    public void setDirectorId(int directorId) {
-        this.directorId = directorId;
-    }
-
-    public int getActorId() {
-        return actorId;
-    }
-
-    public void setActorId(int actorId) {
-        this.actorId = actorId;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public int getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
-    }
-
-    private int typeId;
 
 
 }
