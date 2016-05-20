@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50508
 File Encoding         : 65001
 
-Date: 2016-05-18 23:12:05
+Date: 2016-05-20 16:07:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -131,7 +131,7 @@ CREATE TABLE `member` (
   `money` int(40) NOT NULL DEFAULT '100' COMMENT '余额',
   `rank` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of member
@@ -140,6 +140,12 @@ INSERT INTO `member` VALUES ('1', 'manager', '96e79218965eb72c92a549dd5a330112',
 INSERT INTO `member` VALUES ('2', 'boss', '96e79218965eb72c92a549dd5a330112', '1', 'dsjkfjs@gamil.com', '1993-03-08', '0', '1');
 INSERT INTO `member` VALUES ('3', 'manager2', '96e79218965eb72c92a549dd5a330112', '1', null, null, '100', '2');
 INSERT INTO `member` VALUES ('4', 'user', '96e79218965eb72c92a549dd5a330112', '1', '1', '1995-09-23', '0', '0');
+INSERT INTO `member` VALUES ('5', 'user1', '96e79218965eb72c92a549dd5a330112', '1', '1', '1995-09-23', '0', '0');
+INSERT INTO `member` VALUES ('6', 'user2', '96e79218965eb72c92a549dd5a330112', '1', '1', '1998-09-23', '0', '0');
+INSERT INTO `member` VALUES ('7', 'user3', '96e79218965eb72c92a549dd5a330112', '1', '1', '1998-09-23', '0', '0');
+INSERT INTO `member` VALUES ('8', 'user8', '96e79218965eb72c92a549dd5a330112', '1', 'asdfad', '1998-09-23', '100', '0');
+INSERT INTO `member` VALUES ('9', 'user10', '96e79218965eb72c92a549dd5a330112', '1', 'asdfad', '1998-09-23', '100', '0');
+INSERT INTO `member` VALUES ('10', 'user11', '96e79218965eb72c92a549dd5a330112', '1', 'asdfad', '1998-09-23', '100', '0');
 
 -- ----------------------------
 -- Table structure for `movie`
@@ -148,15 +154,17 @@ DROP TABLE IF EXISTS `movie`;
 CREATE TABLE `movie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `score` float(2,0) NOT NULL,
+  `score` float(2,1) NOT NULL,
   `status` tinyint(2) NOT NULL COMMENT '0:will show;1:no show plan;2:showing;3:have been showed',
   `introduction` text CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of movie
 -- ----------------------------
+INSERT INTO `movie` VALUES ('1', '大闹天宫', '4.5', '1', '很好看');
+INSERT INTO `movie` VALUES ('2', '归来', '4.8', '1', '不错');
 
 -- ----------------------------
 -- Table structure for `ordertable`
@@ -251,14 +259,16 @@ CREATE TABLE `seat` (
 -- ----------------------------
 DROP TABLE IF EXISTS `type`;
 CREATE TABLE `type` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` tinyint(2) NOT NULL,
   `movieId` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_TYPE_MOVIE` (`movieId`),
   CONSTRAINT `FK_TYPE_MOVIE` FOREIGN KEY (`movieId`) REFERENCES `movie` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of type
 -- ----------------------------
+INSERT INTO `type` VALUES ('1', '2', '1');
+INSERT INTO `type` VALUES ('2', '3', '2');
