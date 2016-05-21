@@ -108,17 +108,17 @@ public class MemberAction {
 
     @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByScoreAndType.do",method = RequestMethod.POST)
     @ResponseBody
-    public Object searchByScoreAndType(@RequestParam("score")int score,@RequestParam("type")int type ,HttpServletRequest request){
-        int status = Status.action_success;
-        System.out.print(score+"+++++++++++++"+type);
+    public Object searchByScoreAndType(@RequestParam("score")int score,@RequestParam("status")int status ,HttpServletRequest request){
+        int status_origin = Status.action_success;
+        System.out.print(score+"+++++++++++++"+status);
         List<Movie> movies = new ArrayList<Movie>();
         try{
-            movies = memberService.searchByScoreAndType(score,type,movies);
+            movies = memberService.searchByScoreAndType(score,status,movies);
         }catch (NotExistException e){
             e.printStackTrace();
-            status = Status.action_fail;
+            status_origin = Status.action_fail;
         }
-        return new Response(status,movies);
+        return new Response(status_origin,movies);
     }
     @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByScore.do",method = RequestMethod.POST)
     @ResponseBody

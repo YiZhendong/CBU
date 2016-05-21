@@ -4,7 +4,7 @@ package com.dong.cbu.model;
  * Created by zhendong on 2016/4/20.
  * email:myyizhendong@gmail.com
  */
-public class Type {
+public class Parameter {
     private int id;
     private int type;
     private int movieId;

@@ -51,7 +51,7 @@
 
         SELECT *
         FROM movie
-        WHERE score >=#{score,jdbcType=BIGINT}
+        WHERE status =#{status,jdbcType=BIGINT}
     </select>
 
     <select id="searchByScore" parameterType="Int" resultType="com.dong.cbu.model.Movie">

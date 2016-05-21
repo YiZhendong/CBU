@@ -3,8 +3,10 @@ package com.dong.cbu.dao;
 import com.dong.cbu.model.Member;
 import com.dong.cbu.model.Movie;
 import com.dong.cbu.model.OrderTable;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhendong on 2016/4/29.
@@ -17,7 +19,9 @@ public interface MemberMapper {
     Member loginMember(String name);
     Member showOneMember(int id);
     void superUpdateMember(Member member);
-    List<Movie> searchByScoreAndType(int score,int type);
+    //传递两个参数需要使用@Param
+    List<Movie> searchByScoreAndType(@Param("score") int score,@Param("status") int status);
     List<Movie> searchByScore(int score);
+
     List<Movie> searchByName(String name);
 }

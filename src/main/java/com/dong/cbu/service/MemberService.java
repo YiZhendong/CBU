@@ -27,7 +27,7 @@ public interface MemberService {
     void superUpdateMember(Member member)throws UnknownException;
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
-    List<Movie> searchByScoreAndType(int score,int type,List<Movie> movies)throws NotExistException;
+    List<Movie> searchByScoreAndType(int score,int status,List<Movie> movies)throws NotExistException;
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
     List<Movie> searchByScore(int score,List<Movie> movies)throws NotExistException;
