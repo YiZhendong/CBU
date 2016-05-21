@@ -122,12 +122,15 @@ public class MemberAction {
     }
 
     @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByScoreAndParameter.do",method = RequestMethod.POST)
-    public Object searchByScoreAndParameter(@RequestParam("score") int score,@RequestParam("type")int type,
+    @ResponseBody
+    public Object searchByScoreAndParameter(@RequestParam("score") int score,@RequestParam("typeId")int typeId,
                                             HttpServletRequest request){
         int status = Status.action_success;
         List<Movie> movies = new ArrayList<>();
         try{
-            movies = memberService.searchByScoreAndType(score,type,movies);
+            movies = memberService.searchByScoreAndType(score,typeId,movies);
+            System.out.println(movies.get(0).getName());
+            System.out.print("运行到这里了");
         }catch (NotExistException e){
             e.printStackTrace();
             status = Status.action_fail;
@@ -184,7 +187,7 @@ public class MemberAction {
         try{
             memberService.order(ordertable);
         }catch(MoneyNotEnoughException e){
-            e.printStackTrace();;
+            e.printStackTrace();
             status = Status.action_fail;
         }
         return new Response(status);

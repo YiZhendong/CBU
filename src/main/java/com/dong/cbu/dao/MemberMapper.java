@@ -20,7 +20,7 @@ public interface MemberMapper {
     Member showOneMember(int id);
     void superUpdateMember(Member member);
     //传递两个参数需要使用@Param
-    List<Movie> searchByScoreAndType(@Param("score") int score,@Param("type") int type);
+    List<Movie> searchByScoreAndType(@Param("score") int score,@Param("typeId") int typeId);
     List<Movie> searchByScoreAndStatus(@Param("score") int score,@Param("status") int status);
     List<Movie> searchByScore(int score);
 

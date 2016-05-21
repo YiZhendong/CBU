@@ -72,9 +72,9 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public List<Movie> searchByScoreAndType(int score,int type,List<Movie> movies) throws NotExistException{
+    public List<Movie> searchByScoreAndType(int score,int typeId,List<Movie> movies) throws NotExistException{
         System.out.print("hahahahhaah");
-        movies = memberMapper.searchByScoreAndType(score,type);
+        movies = memberMapper.searchByScoreAndType(score,typeId);
         return movies;
     }
 

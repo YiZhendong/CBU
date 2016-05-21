@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50508
 File Encoding         : 65001
 
-Date: 2016-05-20 16:07:47
+Date: 2016-05-21 19:18:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -158,13 +158,14 @@ CREATE TABLE `movie` (
   `status` tinyint(2) NOT NULL COMMENT '0:will show;1:no show plan;2:showing;3:have been showed',
   `introduction` text CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of movie
 -- ----------------------------
 INSERT INTO `movie` VALUES ('1', '大闹天宫', '4.5', '1', '很好看');
 INSERT INTO `movie` VALUES ('2', '归来', '4.8', '1', '不错');
+INSERT INTO `movie` VALUES ('3', '愤怒的小鸟', '3.9', '1', '还行');
 
 -- ----------------------------
 -- Table structure for `ordertable`
@@ -190,6 +191,25 @@ CREATE TABLE `ordertable` (
 -- ----------------------------
 -- Records of ordertable
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `parameter`
+-- ----------------------------
+DROP TABLE IF EXISTS `parameter`;
+CREATE TABLE `parameter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `typeId` tinyint(2) NOT NULL,
+  `movieId` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_TYPE_MOVIE` (`movieId`),
+  CONSTRAINT `FK_TYPE_MOVIE` FOREIGN KEY (`movieId`) REFERENCES `movie` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of parameter
+-- ----------------------------
+INSERT INTO `parameter` VALUES ('1', '2', '1');
+INSERT INTO `parameter` VALUES ('2', '3', '2');
 
 -- ----------------------------
 -- Table structure for `plan`
@@ -253,22 +273,3 @@ CREATE TABLE `seat` (
 -- ----------------------------
 -- Records of seat
 -- ----------------------------
-
--- ----------------------------
--- Table structure for `type`
--- ----------------------------
-DROP TABLE IF EXISTS `type`;
-CREATE TABLE `type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` tinyint(2) NOT NULL,
-  `movieId` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_TYPE_MOVIE` (`movieId`),
-  CONSTRAINT `FK_TYPE_MOVIE` FOREIGN KEY (`movieId`) REFERENCES `movie` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of type
--- ----------------------------
-INSERT INTO `type` VALUES ('1', '2', '1');
-INSERT INTO `type` VALUES ('2', '3', '2');

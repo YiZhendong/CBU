@@ -51,7 +51,8 @@
 
         SELECT *
         FROM movie
-        WHERE status =#{status,jdbcType=BIGINT}
+        INNER JOIN parameter on parameter.movieId = movie.id
+        WHERE score >= #{score,jdbcType=BIGINT} AND  typeId = #{typeId,jdbcType=BIGINT}
     </select>
 
     <select id="searchByScore" parameterType="Int" resultType="com.dong.cbu.model.Movie">

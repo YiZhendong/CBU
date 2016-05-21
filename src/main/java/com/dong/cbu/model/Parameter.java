@@ -6,7 +6,7 @@ package com.dong.cbu.model;
  */
 public class Parameter {
     private int id;
-    private int type;
+    private int typeId;
     private int movieId;
 
     public int getId() {
@@ -17,12 +17,12 @@ public class Parameter {
         this.id = id;
     }
 
-    public int getType() {
-        return type;
+    public int getTypeId() {
+        return typeId;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 
     public int getMovieId() {
