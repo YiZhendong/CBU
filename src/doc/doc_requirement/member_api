@@ -205,6 +205,23 @@ Reponse:{
         }
 
 }
+5.3根据电影得分以及状态搜索
+url:/member/movie/searchByScoreAndStatus.do
+methond:post
+Request:{
+    score = 4,
+    status = 1
+}
+Reponse:{
+    status:5            //5:操作成功 11:没有记录
+     "body":[
+        {
+            "id":12,
+            "name":"北京遇上西雅图"
+            "score":8.0                   //评分
+        }
+
+}
 6.对电影进行评论
 url:/member/movie/comment.do
 method:post

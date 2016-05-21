@@ -61,6 +61,11 @@
         WHERE score >=#{score,jdbcType=BIGINT}
     </select>
 
+    <select id="searchByScoreAndStatus" parameterType="Map" resultType="com.dong.cbu.model.Movie">
+        SELECT *
+        From movie
+        WHERE status = #{status,jdbcType=BIGINT} AND score >= #{score,jdbcType=BIGINT}
+    </select>
     <select id="searchByName" parameterType="String" resultType="Integer">
         SELECT id FROM movie WHERE name =#{name,jdbcType=VARCHAR }
     </select>
