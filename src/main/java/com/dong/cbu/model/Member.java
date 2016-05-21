@@ -14,6 +14,10 @@ public class Member {
     private int money;
     private int rank;
 
+    /**
+     * spring 注入时需要空的构造方法
+     */
+    public Member(){};
     public void setRank(int rank){
         this.rank = rank;
     }
