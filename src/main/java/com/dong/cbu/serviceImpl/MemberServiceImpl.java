@@ -8,6 +8,8 @@ import com.dong.cbu.exception.*;
 import com.dong.cbu.model.*;
 import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.EncryptionUtil;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,12 +30,17 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     private OrderTableMapper ordertableMapper;
 
+    private Log logger =LogFactory.getLog(MemberServiceImpl.class);
+
 
     @Override
     public Member login(String name,String password) throws NotExistException,PasswordNotMatchException{
-        Member member = memberMapper.loginMember(name);
+        String message ="";
+        Member member = memberMapper.searchMemberByName(name);
         if(member == null){
-            throw new NotExistException("member"+name+"not exists");
+            message = "用户" + name + "尝试登陆，但该用户不存在";
+            logger.debug(message);
+            throw new NotExistException(message,Status.not_exits);
         }else{
             String encryptPassword = member.getPassword();
             if(!encryptPassword.equals(EncryptionUtil.encrypt(password))){

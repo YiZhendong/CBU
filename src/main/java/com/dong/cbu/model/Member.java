@@ -1,5 +1,9 @@
 package com.dong.cbu.model;
 
+import com.dong.cbu.validator.MemberRegister;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by zhendong on 2016/4/20.
  * email:myyizhendong@gmail.com
@@ -8,6 +12,7 @@ public class Member {
     private int id;
     private String name;
     private String password;
+    @NotNull(message = "性别为1和2，不能为空",groups = {MemberRegister.class})
     private int sex;
     private String email;
     private String birthday;
@@ -80,5 +85,10 @@ public class Member {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    @Override
+    public String toString(){
+        return "Member[id=" + id + ",name="+ name +"]";
     }
 }

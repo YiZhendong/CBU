@@ -10,7 +10,8 @@ import com.dong.cbu.model.OrderTable;
 import com.dong.cbu.service.MemberService;
 import com.dong.cbu.util.SessionUtil;
 import com.dong.cbu.validator.MemberAddValidator;
-import org.aspectj.weaver.ast.Not;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -29,166 +30,173 @@ import java.util.List;
  * email:myyizhendong@gmail.com
  */
 @Controller
-public class MemberAction {
-    private static final String ACTION_BASE_URL_HEADER = "/member";
+public class MemberAction{
+    private static final String ACTION_BASE_URL_HEADER="/member";
 
     @Autowired
     private MemberService memberService;
+    private Log logger =LogFactory.getLog(MemberAction.class);
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/login.do",method = RequestMethod.POST)
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/login.do", method=RequestMethod.POST)
     @ResponseBody
-    public Object loginMember(@RequestParam("name")String name, @RequestParam("password")String password, HttpServletRequest request) {
+    public Object loginMember(@RequestParam("name") String name, @RequestParam("password") String password, HttpServletRequest request){
         System.out.println("++++++++++++++++++++"+name);
         int status;
-        Member member = null;
+        String username;
+        Member member=null;
         try{
-            member = memberService.login(name,password);
-            status = member.getRank();
+            member=memberService.login(name, password);
+            username = member.getName();
+            logger.info(username+"登陆成功;");
+            System.out.print(member);
+            status=member.getRank();
         }catch(NotExistException e){
             e.printStackTrace();
-            status = Status.not_exits;
-        }catch (PasswordNotMatchException e){
+            status=Status.not_exits;
+        }catch(PasswordNotMatchException e){
             e.printStackTrace();
-            status = Status.password_not_correct;
+            status=Status.password_not_correct;
         }
-        SessionUtil.setLoginMember(request,member);
+        SessionUtil.setLoginMember(request, member);
         System.out.println("null "+status+member);
-        return new Response(status,member);
+        return new Response(status, member);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/register.do",method = RequestMethod.POST)
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/register.do", method=RequestMethod.POST)
     @ResponseBody
-    public Object registerMember(HttpServletRequest request, @Validated({MemberAddValidator.class})@RequestBody Member member){
-        int status = Status.action_success;
+    public Object registerMember(HttpServletRequest request, @Validated({MemberAddValidator.class}) @RequestBody Member member){
+        int status=Status.action_success;
         try{
             memberService.insert(member);
             System.out.println(member);
         }catch(MemberAlreadyExistException e){
             e.printStackTrace();
-            status = Status.alreadyexits;
-            member = null;
-            return new Response(status,member);
+            status=Status.alreadyexits;
+            member=null;
+            return new Response(status, member);
         }catch(UnknownException e){
             e.printStackTrace();
-            status = Status.action_fail;
-            member = null;
-            return new Response(status,member);
+            status=Status.action_fail;
+            member=null;
+            return new Response(status, member);
         }
-        return new Response(status,member);
+        return new Response(status, member);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/showOneMember.do",method = RequestMethod.POST)
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/showOneMember.do", method=RequestMethod.POST)
     @ResponseBody
     public Object showOneMember(@RequestParam int id){
-        int status = Status.action_success;
-        Member member = new Member();
-        try {
-            member = memberService.showOneMember(id);
-            if(member == null){
-                status = Status.not_exits;
+        int status=Status.action_success;
+        Member member=new Member();
+        try{
+            member=memberService.showOneMember(id);
+            if(member==null){
+                status=Status.not_exits;
             }
-        }catch (UnknownException e){
+        }catch(UnknownException e){
             e.printStackTrace();
         }
-        return new Response(status,member);
+        return new Response(status, member);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/superUpdateMember.do",method = RequestMethod.POST)
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/superUpdateMember.do", method=RequestMethod.POST)
     @ResponseBody
-    public Object superUpdateMember(@Validated({MemberAddValidator.class})@RequestBody Member member){
-        int status = Status.action_success;
+    public Object superUpdateMember(@Validated({MemberAddValidator.class}) @RequestBody Member member){
+        int status=Status.action_success;
         try{
             memberService.superUpdateMember(member);
         }catch(UnknownException e){
             e.printStackTrace();
-            status = Status.action_fail;
+            status=Status.action_fail;
         }
         return new Response(status);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByScoreAndStatus.do",method = RequestMethod.POST)
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/movie/searchByScoreAndStatus.do", method=RequestMethod.POST)
     @ResponseBody
-    public Object searchByScoreAndStatus(@RequestParam("score")int score,@RequestParam("status")int status ,HttpServletRequest request){
-        int status_origin = Status.action_success;
+    public Object searchByScoreAndStatus(@RequestParam("score") int score, @RequestParam("status") int status, HttpServletRequest request){
+        int status_origin=Status.action_success;
         System.out.print(score+"+++++++++++++"+status);
-        List<Movie> movies = new ArrayList<Movie>();
+        List<Movie> movies=new ArrayList<Movie>();
         try{
-            movies = memberService.searchByScoreAndStatus(score,status,movies);
-        }catch (NotExistException e){
+            movies=memberService.searchByScoreAndStatus(score, status, movies);
+        }catch(NotExistException e){
             e.printStackTrace();
-            status_origin = Status.action_fail;
+            status_origin=Status.action_fail;
         }
-        return new Response(status_origin,movies);
+        return new Response(status_origin, movies);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByScoreAndParameter.do",method = RequestMethod.POST)
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/movie/searchByScoreAndParameter.do", method=RequestMethod.POST)
     @ResponseBody
-    public Object searchByScoreAndParameter(@RequestParam("score") int score,@RequestParam("typeId")int typeId,
+    public Object searchByScoreAndParameter(@RequestParam("score") int score, @RequestParam("typeId") int typeId,
                                             HttpServletRequest request){
-        int status = Status.action_success;
-        List<Movie> movies = new ArrayList<>();
+        int status=Status.action_success;
+        List<Movie> movies=new ArrayList<>();
         try{
-            movies = memberService.searchByScoreAndType(score,typeId,movies);
+            movies=memberService.searchByScoreAndType(score, typeId, movies);
             System.out.println(movies.get(0).getName());
             System.out.print("运行到这里了");
-        }catch (NotExistException e){
+        }catch(NotExistException e){
             e.printStackTrace();
-            status = Status.action_fail;
+            status=Status.action_fail;
         }
-        return new Response(status,movies);
-    }
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByScore.do",method = RequestMethod.POST)
-    @ResponseBody
-    public Object searchByScore(@RequestParam("score")int score,HttpServletRequest request){
-        int status = Status.action_success;
-        System.out.print(score+"+++++++++++++");
-        List<Movie> movies = new ArrayList<Movie>();
-        try{
-            movies = memberService.searchByScore(score,movies);
-        }catch (NotExistException e){
-            e.printStackTrace();
-            status = Status.action_fail;
-        }
-        return new Response(status,movies);
-    }
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/movie/searchByName.do",method = RequestMethod.POST)
-    @ResponseBody
-    public Object searchByName(HttpServletRequest request ,@RequestParam("name") String name){
-        int status = Status.action_success;
-        System.out.println("this is a searchByName test"+name);
-        List<Movie> movies = new ArrayList<>();
-        try{
-            movies = memberService.searchByName(name,movies);
-        }catch (NotExistException e){
-            e.printStackTrace();
-            status = Status.action_fail;
-            return new Response(status,movies);
-        }
-        return new Response(status,movies);
+        return new Response(status, movies);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "/comment.do",method = RequestMethod.POST)
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/movie/searchByScore.do", method=RequestMethod.POST)
     @ResponseBody
-    public Object comment(HttpServletRequest request,@RequestBody Comment comment){
-        int status = Status.action_success;
+    public Object searchByScore(@RequestParam("score") int score, HttpServletRequest request){
+        int status=Status.action_success;
+        System.out.print(score+"+++++++++++++");
+        List<Movie> movies=new ArrayList<Movie>();
+        try{
+            movies=memberService.searchByScore(score, movies);
+        }catch(NotExistException e){
+            e.printStackTrace();
+            status=Status.action_fail;
+        }
+        return new Response(status, movies);
+    }
+
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/movie/searchByName.do", method=RequestMethod.POST)
+    @ResponseBody
+    public Object searchByName(HttpServletRequest request, @RequestParam("name") String name){
+        int status=Status.action_success;
+        System.out.println("this is a searchByName test"+name);
+        List<Movie> movies=new ArrayList<>();
+        try{
+            movies=memberService.searchByName(name, movies);
+        }catch(NotExistException e){
+            e.printStackTrace();
+            status=Status.action_fail;
+            return new Response(status, movies);
+        }
+        return new Response(status, movies);
+    }
+
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/comment.do", method=RequestMethod.POST)
+    @ResponseBody
+    public Object comment(HttpServletRequest request, @RequestBody Comment comment){
+        int status=Status.action_success;
         try{
             memberService.comment(comment);
-        }catch (UnknownException e){
+        }catch(UnknownException e){
             e.printStackTrace();
-            status = Status.action_fail;
+            status=Status.action_fail;
         }
         return new Response(status);
     }
 
-    @RequestMapping(value = ACTION_BASE_URL_HEADER + "order.do",method = RequestMethod.POST)
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"order.do", method=RequestMethod.POST)
     @ResponseBody
     public Object order(HttpServletRequest request, @RequestBody OrderTable ordertable){
-        int status = Status.action_success;
+        int status=Status.action_success;
         try{
             memberService.order(ordertable);
         }catch(MoneyNotEnoughException e){
             e.printStackTrace();
-            status = Status.action_fail;
+            status=Status.action_fail;
         }
         return new Response(status);
     }

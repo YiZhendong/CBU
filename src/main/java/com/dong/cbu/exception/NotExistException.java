@@ -5,10 +5,16 @@ package com.dong.cbu.exception;
  * email:myyizhendong@gmail.com
  */
 public class NotExistException extends Exception {
+    private int status;
     public NotExistException(){
         super();
     }
     public NotExistException(String message){
         super(message);
+    }
+
+    public NotExistException(String message, int status){
+        super(message);
+        this.status = status;
     }
 }

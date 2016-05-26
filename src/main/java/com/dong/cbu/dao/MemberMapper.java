@@ -25,4 +25,6 @@ public interface MemberMapper {
     List<Movie> searchByScore(int score);
 
     List<Movie> searchByName(String name);
+
+    Member searchMemberByName(String name);
 }
