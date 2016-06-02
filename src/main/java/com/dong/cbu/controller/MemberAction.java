@@ -175,19 +175,6 @@ public class MemberAction{
         return new Response(status, movies);
     }
 
-    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/comment.do", method=RequestMethod.POST)
-    @ResponseBody
-    public Object comment(HttpServletRequest request, @RequestBody Comment comment){
-        int status=Status.action_success;
-        try{
-            memberService.comment(comment);
-        }catch(UnknownException e){
-            e.printStackTrace();
-            status=Status.action_fail;
-        }
-        return new Response(status);
-    }
-
     @RequestMapping(value=ACTION_BASE_URL_HEADER+"order.do", method=RequestMethod.POST)
     @ResponseBody
     public Object order(HttpServletRequest request, @RequestBody OrderTable ordertable){

@@ -55,6 +55,12 @@
         WHERE score >= #{score,jdbcType=BIGINT} AND  typeId = #{typeId,jdbcType=BIGINT}
     </select>
 
+    <select id="searchMemberByName" parameterType="String" resultType="com.dong.cbu.model.Member">
+        SELECT *
+        from member
+        WHERE name = #{name}
+    </select>
+
     <select id="searchByScore" parameterType="Int" resultType="com.dong.cbu.model.Movie">
 
         SELECT *

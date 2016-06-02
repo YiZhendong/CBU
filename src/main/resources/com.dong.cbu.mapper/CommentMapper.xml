@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dong.cbu.dao.CommentMapper">
     <insert id="comment" parameterType="com.dong.cbu.model.Comment">
-        insert INTO comment (id,title,keyword,clicks,detail,owenerId,createdId,movieId,preuserId)
+        insert INTO comment (id,title,keyword,clicks,detail,ownerId,created,movieId,preuserId)
         VALUES
-        (#{id,jdbcType=BIGINT},#{title,jdbcType=VARCHAR},#{keyword,jdbcType=VARCHAR},#{clicks,jdbctype=BIGINT},#{detail,jdbctype=VARCHAR},
-        #{ownerId,jdbcType=BIGINT},#{createdId,jdbctype=BIGINT},#{movieId,jdbcType=BIGINT},#{preuserId,jdbcType=BIGINT})
+        (#{id,jdbcType=BIGINT},#{title,jdbcType=VARCHAR},#{keyword,jdbcType=VARCHAR},#{clicks,jdbcType=BIGINT},#{detail,jdbcType=VARCHAR},
+        #{ownerId,jdbcType=BIGINT},#{created,jdbcType=TIMESTAMP},#{movieId,jdbcType=BIGINT},#{preuserId,jdbcType=BIGINT})
     </insert>
 </mapper>

@@ -7,5 +7,5 @@ import com.dong.cbu.model.Comment;
  * email:myyizhendong@gmail.com
  */
 public interface CommentMapper {
-    int comment(Comment comment);
+    void comment(Comment comment);
 }

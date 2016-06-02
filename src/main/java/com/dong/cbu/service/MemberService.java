@@ -39,8 +39,5 @@ public interface MemberService {
     List<Movie> searchByName(String name,List<Movie> movies)throws NotExistException;
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
-    void comment(Comment comment)throws UnknownException;
-
-    @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
     void order(OrderTable ordertable) throws MoneyNotEnoughException;
 }

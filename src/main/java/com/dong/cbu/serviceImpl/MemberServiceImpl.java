@@ -98,12 +98,7 @@ public class MemberServiceImpl implements MemberService{
         return movies;
     }
 
-    @Override
-    public void comment(Comment comment)throws UnknownException{
-        if (commentMapper.comment(comment) == Status.action_fail){
-            throw new UnknownException();
-        }
-    }
+
     @Override
     public void order(OrderTable ordertable)throws MoneyNotEnoughException{
         if (ordertableMapper.order(ordertable)== Status.action_fail){
