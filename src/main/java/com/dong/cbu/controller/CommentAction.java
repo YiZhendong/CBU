@@ -8,12 +8,14 @@ import com.dong.cbu.service.CommentService;
 import com.dong.cbu.util.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.dong.cbu.controller.CommentAction.ACTION_BASE_URL_HEADER;
 
 /**
  * Created by zhendong on 2016/5/21.
@@ -39,5 +41,33 @@ public class CommentAction {
 			status=Status.action_fail;
 		}
 		return new Response(status);
+	}
+
+	@RequestMapping(value=ACTION_BASE_URL_HEADER+"/queryByMovieId.do",method=RequestMethod.POST)
+	@ResponseBody
+	public Object queryByMovieId(HttpServletRequest request, @RequestParam("movieId") int movieId){
+		int status = Status.action_success;
+		List<Comment> comments = new ArrayList<>();
+		try{
+			comments = commentService.queryByMovieId(movieId,comments);
+		}catch(UnknownException e){
+			e.printStackTrace();
+			status = Status.action_fail;
+		}
+		return new Response(status,comments);
+	}
+
+	@RequestMapping(value=ACTION_BASE_URL_HEADER+"/queryByOwnerId.do",method=RequestMethod.POST)
+	@ResponseBody
+	public Object queryByOwnerId(HttpServletRequest request, @RequestParam("ownerId") int ownerId){
+		int status = Status.action_success;
+		List<Comment> comments = new ArrayList<>();
+		try{
+			comments = commentService.queryByMovieId(ownerId,comments);
+		}catch(UnknownException e){
+			e.printStackTrace();
+			status = Status.action_fail;
+		}
+		return new Response(status,comments);
 	}
 }

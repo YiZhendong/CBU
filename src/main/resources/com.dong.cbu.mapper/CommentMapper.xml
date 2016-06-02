@@ -7,4 +7,15 @@
         (#{id,jdbcType=BIGINT},#{title,jdbcType=VARCHAR},#{keyword,jdbcType=VARCHAR},#{clicks,jdbcType=BIGINT},#{detail,jdbcType=VARCHAR},
         #{ownerId,jdbcType=BIGINT},#{created,jdbcType=TIMESTAMP},#{movieId,jdbcType=BIGINT},#{preuserId,jdbcType=BIGINT})
     </insert>
+    <select id="queryByMovieId" parameterType="Int" resultType="com.dong.cbu.model.Comment">
+        SELECT *
+        FROM comment
+        WHERE movieId =#{movieId,jdbcType=BIGINT}
+    </select>
+
+    <select id="queryByOwnerId" parameterType="Int" resultType="com.dong.cbu.model.Comment">
+        SELECT *
+        FROM comment
+        WHERE ownerId =#{ownerId,jdbcType=BIGINT}
+    </select>
 </mapper>
