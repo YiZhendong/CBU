@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50508
 File Encoding         : 65001
 
-Date: 2016-05-21 19:18:27
+Date: 2016-06-05 15:14:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,14 +59,14 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `keyword` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
-  `clicks` int(11) unsigned NOT NULL COMMENT 'the number of click',
+  `keyword` varchar(30) CHARACTER SET utf8 DEFAULT '”“',
+  `clicks` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'the number of click',
   `detail` mediumtext CHARACTER SET utf8 NOT NULL,
   `ownerId` int(11) NOT NULL,
   `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `movieId` int(11) NOT NULL,
   `preuserId` int(11) DEFAULT NULL,
-  `status` int(11) unsigned zerofill NOT NULL COMMENT '状态。0：未审批 1：已审批',
+  `status` int(11) unsigned zerofill DEFAULT NULL COMMENT '状态。0：未审批 1：已审批',
   PRIMARY KEY (`id`),
   KEY `ownerId` (`ownerId`),
   KEY `moiveId` (`movieId`),
@@ -74,11 +74,12 @@ CREATE TABLE `comment` (
   CONSTRAINT `moiveId` FOREIGN KEY (`movieId`) REFERENCES `movie` (`id`),
   CONSTRAINT `ownerId` FOREIGN KEY (`ownerId`) REFERENCES `member` (`id`),
   CONSTRAINT `preuserId` FOREIGN KEY (`preuserId`) REFERENCES `member` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
+INSERT INTO `comment` VALUES ('1', 'hello', 'test', '0', 'hello', '1', '2016-05-26 16:54:00', '1', '1', null);
 
 -- ----------------------------
 -- Table structure for `director`
@@ -131,7 +132,7 @@ CREATE TABLE `member` (
   `money` int(40) NOT NULL DEFAULT '100' COMMENT '余额',
   `rank` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of member
@@ -146,6 +147,11 @@ INSERT INTO `member` VALUES ('7', 'user3', '96e79218965eb72c92a549dd5a330112', '
 INSERT INTO `member` VALUES ('8', 'user8', '96e79218965eb72c92a549dd5a330112', '1', 'asdfad', '1998-09-23', '100', '0');
 INSERT INTO `member` VALUES ('9', 'user10', '96e79218965eb72c92a549dd5a330112', '1', 'asdfad', '1998-09-23', '100', '0');
 INSERT INTO `member` VALUES ('10', 'user11', '96e79218965eb72c92a549dd5a330112', '1', 'asdfad', '1998-09-23', '100', '0');
+INSERT INTO `member` VALUES ('11', 'user12', '96e79218965eb72c92a549dd5a330112', '0', '111', '1998-09-23', '0', '0');
+INSERT INTO `member` VALUES ('12', 'user14', '96e79218965eb72c92a549dd5a330112', '2', 'asdfad', '1998-09-23', '100', '0');
+INSERT INTO `member` VALUES ('13', 'user15', '96e79218965eb72c92a549dd5a330112', '0', 'asdfad', '1998-09-23', '100', '0');
+INSERT INTO `member` VALUES ('14', 'user16', '96e79218965eb72c92a549dd5a330112', '0', 'asdfad', '1998-09-23', '100', '0');
+INSERT INTO `member` VALUES ('15', 'user20', '96e79218965eb72c92a549dd5a330112', '1', 'asdfad', '1998-09-23', '100', '0');
 
 -- ----------------------------
 -- Table structure for `movie`
