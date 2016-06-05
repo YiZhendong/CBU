@@ -222,6 +222,19 @@ Reponse:{
         }
 
 }
+5.4根据电影的id进行搜索
+url:/member/searchById.do
+method:post
+Request:{
+    "movieId":1
+}
+Response:{
+               "id":1,      //    `电影id`,
+               "name":"大闹天宫", //varchar(50)      `电影名`
+               "score":4.5    //tinyint(2)   `得分`
+               "status":0    //tinyint(2)  `状态`            //0:将上映1:没有上映计划2:正在上映3:已经上映结束
+               "introduction":"很好" //text     `介绍`
+}
 6.对电影进行评论
 url:/member/movie/comment.do
 method:post
@@ -303,6 +316,38 @@ Request:
             "created":2016-04-26 21:46:00
         }
         }
+    }
+    9.显示电影
+    url:/member/showFirstPageMovie.do
+    method:get
+    request:null
+    urlParams:
+    {
+        "currentPage":1
+    }
+    Response:{
+    "status":5,
+    "body":{
+        "currentPage":1,
+        "totalPage":1,
+        "totalRecords":8,
+        "movies":[
+        {
+               "id":1,      //    `电影id`,
+               "name":"大闹天宫", //varchar(50)      `电影名`
+               "score":4.5    //tinyint(2)   `得分`
+               "status":0    //tinyint(2)  `状态`            //0:将上映1:没有上映计划2:正在上映3:已经上映结束
+               "introduction":"很好" //text     `介绍`
+        },
+        {
+                "id":2,      //    `电影id`,
+                "name":"爱丽丝梦游仙境", //varchar(50)      `电影名`
+                "score":4.5    //tinyint(2)   `得分`
+                "status":0    //tinyint(2)  `状态`            //0:将上映1:没有上映计划2:正在上映3:已经上映结束
+                "introduction":"很好" //text     `介绍`
+        }
+        ]
+    }
     }
 
 
