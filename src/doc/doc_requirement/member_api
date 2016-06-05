@@ -229,11 +229,14 @@ Request:{
     "movieId":1
 }
 Response:{
+            status:5
+            "body":{
                "id":1,      //    `电影id`,
                "name":"大闹天宫", //varchar(50)      `电影名`
                "score":4.5    //tinyint(2)   `得分`
                "status":0    //tinyint(2)  `状态`            //0:将上映1:没有上映计划2:正在上映3:已经上映结束
                "introduction":"很好" //text     `介绍`
+            }
 }
 6.对电影进行评论
 url:/member/movie/comment.do

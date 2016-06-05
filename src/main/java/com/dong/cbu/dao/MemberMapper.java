@@ -27,4 +27,7 @@ public interface MemberMapper {
     List<Movie> searchByName(String name);
 
     Member searchMemberByName(String name);
+    List<Movie> showMovie();
+
+    Movie searchById(int movieId);
 }

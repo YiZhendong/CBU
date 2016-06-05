@@ -4,7 +4,9 @@ import com.dong.cbu.commom.Response;
 import com.dong.cbu.commom.Status;
 import com.dong.cbu.exception.UnknownException;
 import com.dong.cbu.model.Comment;
+import com.dong.cbu.model.CommentPage;
 import com.dong.cbu.service.CommentService;
+import com.dong.cbu.util.Pagination;
 import com.dong.cbu.util.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,15 +61,22 @@ public class CommentAction {
 
 	@RequestMapping(value=ACTION_BASE_URL_HEADER+"/queryByOwnerId.do",method=RequestMethod.POST)
 	@ResponseBody
-	public Object queryByOwnerId(HttpServletRequest request, @RequestParam("ownerId") int ownerId){
+	public Object queryByOwnerId(HttpServletRequest request, @RequestParam("ownerId") int ownerId,
+	@RequestParam("currentPage") int currentPage){
 		int status = Status.action_success;
 		List<Comment> comments = new ArrayList<>();
+		CommentPage commentPage = new CommentPage();
 		try{
-			comments = commentService.queryByMovieId(ownerId,comments);
+			comments = commentService.queryByOwnerId(ownerId,comments);
+			if(comments!=null){
+				commentPage = Pagination.showCommentPage(comments,currentPage);
+			}else{
+				status = Status.action_fail;
+			}
 		}catch(UnknownException e){
 			e.printStackTrace();
 			status = Status.action_fail;
 		}
-		return new Response(status,comments);
+		return new Response(status,commentPage);
 	}
 }

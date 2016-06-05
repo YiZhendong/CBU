@@ -3,6 +3,7 @@ package com.dong.cbu.service;
 import com.dong.cbu.exception.*;
 
 import com.dong.cbu.model.*;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -40,4 +41,10 @@ public interface MemberService {
 
     @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
     void order(OrderTable ordertable) throws MoneyNotEnoughException;
+
+    @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
+    List<Movie> showMovie()throws UnknownException;
+
+    @Transactional(isolation = Isolation.READ_COMMITTED,rollbackFor = Throwable.class)
+    Movie searchById(int movieId) throws UnknownException;
 }

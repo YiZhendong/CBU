@@ -1,0 +1,77 @@
+6.对电影进行评论       //与之前重复
+url:/member/movie/comment.do
+method:post
+Request:{
+    id(member):12
+    id(movie):12
+    title:"今天下午吃什么？"
+    keyword:"吃"
+    detail:"银桦还是学子还是家园还是芙蓉，this is a question."
+    created:"2016-04-26 17:18:00"       //创建时间
+    preuserId:null
+}
+Response:{
+    status:5        //5:操作成功    6:操作失败
+    body:null
+}
+
+1.根据电影的id进行查找某个电影下的评论,按页显示
+url:/movie/queryByMovieId.do
+method:post
+Request:{
+    "movieId":1,
+    "currentpage":1
+}
+Response:{
+    "status":5,
+    "body":
+        {
+            "currentPage":1,
+            "totalPage":6,
+            "totalRecords":30,
+            "comments":[
+             {
+                    "id":1,         // int(11)    `评论id`,
+                    "title":"我的感想",     // varchar(50)     `标题`
+                    "keyword":"梦想",      // varchar(30) `关键字`
+                    "clicks":4,    int(11)     `浏览次数`
+                    "detail":"我有一个梦想，梦想所有的孩子能够在同一所学校上学，不分肤色"   // mediumtext  `评论内容`
+                    "owenerId":1                    //  int(11)     `作者id`
+                    "created":2016-06-05  21:34:00,  //  timestamp   `发表时间` 格式:0000-00-00 00:00:00
+                    "movieId":1,                    //int(11)     `电影id`
+                    "preuserId":null                // int(11)     `所回复作者的Id，就是说对哪个人评论，那个人的id`  //非必须
+             }
+             ]
+        }
+}
+
+
+2.根据某个人的id进行查找某人所有的评论,按页显示
+url:/movie/queryByOwnerId.do
+method:post
+Request:{
+    "OwnerId":1,
+    "currentpage":1
+}
+Response:{
+    "status":5,
+    "body":
+        {
+            "currentPage":1,
+            "totalPage":6,
+            "totalRecords":30,
+            "comments":[
+             {
+                    "id":1,         // int(11)    `评论id`,
+                    "title":"我的感想",     // varchar(50)     `标题`
+                    "keyword":"梦想",      // varchar(30) `关键字`
+                    "clicks":4,    int(11)     `浏览次数`
+                    "detail":"我有一个梦想，梦想所有的孩子能够在同一所学校上学，不分肤色"   // mediumtext  `评论内容`
+                    "owenerId":1                    //  int(11)     `作者id`
+                    "created":2016-06-05  21:34:00,  //  timestamp   `发表时间` 格式:0000-00-00 00:00:00
+                    "movieId":1,                    //int(11)     `电影id`
+                    "preuserId":null                // int(11)     `所回复作者的Id，就是说对哪个人评论，那个人的id`  //非必须
+             }
+             ]
+        }
+}

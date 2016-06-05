@@ -105,4 +105,14 @@ public class MemberServiceImpl implements MemberService{
             throw new MoneyNotEnoughException();
         }
     }
+
+    @Override
+    public List<Movie> showMovie() throws UnknownException{
+        return memberMapper.showMovie();
+    }
+
+    @Override
+    public Movie searchById(int movieId) throws UnknownException{
+        return memberMapper.searchById(movieId);
+    }
 }

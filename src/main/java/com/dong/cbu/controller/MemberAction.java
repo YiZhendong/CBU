@@ -3,11 +3,9 @@ package com.dong.cbu.controller;
 import com.dong.cbu.commom.Response;
 import com.dong.cbu.commom.Status;
 import com.dong.cbu.exception.*;
-import com.dong.cbu.model.Comment;
-import com.dong.cbu.model.Member;
-import com.dong.cbu.model.Movie;
-import com.dong.cbu.model.OrderTable;
+import com.dong.cbu.model.*;
 import com.dong.cbu.service.MemberService;
+import com.dong.cbu.util.Pagination;
 import com.dong.cbu.util.SessionUtil;
 import com.dong.cbu.validator.MemberAddValidator;
 import org.apache.commons.logging.Log;
@@ -22,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-//import static com.dong.cbu.controller.MemberAction.ACTION_BASE_URL_HEADER;
 
 
 /**
@@ -175,7 +172,7 @@ public class MemberAction{
         return new Response(status, movies);
     }
 
-    @RequestMapping(value=ACTION_BASE_URL_HEADER+"order.do", method=RequestMethod.POST)
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/order.do", method=RequestMethod.POST)
     @ResponseBody
     public Object order(HttpServletRequest request, @RequestBody OrderTable ordertable){
         int status=Status.action_success;
@@ -186,5 +183,35 @@ public class MemberAction{
             status=Status.action_fail;
         }
         return new Response(status);
+    }
+
+    @RequestMapping(value=ACTION_BASE_URL_HEADER+"/showFirstPageMovie.do",method = RequestMethod.GET)
+    @ResponseBody
+    public Object showMovie(@RequestParam int currentPage){
+        int status = Status.action_success;
+        List<Movie> movies = new ArrayList<>();
+        MoviePage moviePage = new MoviePage();
+        try{
+            movies = memberService.showMovie();
+            moviePage =Pagination.showMoviePage(movies,currentPage);
+        }catch (UnknownException e){
+            e.printStackTrace();
+            status = Status.action_fail;
+        }
+        return new Response(status,moviePage);
+    }
+
+    @RequestMapping(value = ACTION_BASE_URL_HEADER+"/searchById.do",method = RequestMethod.POST)
+    @ResponseBody
+    public Object searchById(@RequestParam("movieId") int movieId,HttpServletRequest request){
+        int status = Status.action_success;
+        Movie movie = new Movie();
+        try{
+            movie = memberService.searchById(movieId);
+        }catch (UnknownException e){
+            e.printStackTrace();
+            status = Status.action_fail;
+        }
+        return new Response(status,movie);
     }
 }
